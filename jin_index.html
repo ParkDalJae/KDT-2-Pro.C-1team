@@ -72,25 +72,48 @@ form{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  list-style-type: none;
 }
-input{
+.firstInput{
+  margin: 0;
   width: 150px;
   height: 50px;
   background-color: darkgrey;
   border : 3px solid;
   border-radius: 10px 10px;
-  text-size-adjust: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.secondInput{
+  width: 60vw;
+  height: 50px;
+  background-color: powderblue;
+  border : 3px solid;
+  border-radius: 8px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 section{
   width: 80vw;
-  height: 150px;
+  height: 150vh;
   border: 5px solid black;
   position: relative;
   top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.boxContainer{
+  width: 60vw;
+  height: 450px;
+  border: 3px dotted black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 </style>
 
@@ -101,47 +124,78 @@ section{
 
   <header>
     <nav>
-      <ul>
         <form>
-          <button>
-            <input type="button" value="Info_1" id="Info_1">
-          </button>
-          <button>
-            <input type="button" value="Info_2" id="Info_2">
-          </button>
-          <button>
-            <input type="button" value="Info_3" id="Info_3">
-          </button>
-          <button>
-            <input type="button" value="Info_4" id="Info_4">
-          </button>
-          <button>
-            <input type="button" value="Info_5" id="Info_5">
-          </button>
+          <input class="firstInput" type = "button" value="Info_1">
+          <input class="firstInput" type = "button" value="Info_2">
+          <input class="firstInput" type = "button" value="Info_3">
+          <input class="firstInput" type = "button" value="Info_4">
+          <input class="firstInput" type = "button" value="Info_5">
         </form>
         <!-- <li>Info_1</li> -->
         <!-- <li>Info_2</li> -->
         <!-- <li>Info_3</li> -->
         <!-- <li>Info_4</li> -->
         <!-- <li>Info_5</li> -->
-      </ul>
       </nav>
     </nav>
     <h1>&#128120Hi, My name is Jin.&#128120<br>&#128010It's good to see you.&#128010</h1>
     <h3>I'm KDT 2nd student!!!</h3>
   </header>
 
-
+  
   <section>
-    <p>
-      <strong>
-        Hi, i'm Jin Her. also my english name is ellen but you can call me jin.
-        I'm from yeosu but i graduated engineering of colledge in jeonju university.<br>and now i'm living in daejeon to looking for works 'bout year.
-        My parents are living in yeosu and my little brother is university student,<br>but now he's in airforce army in sacheon for complete his duty of Korea milittary.
-        I'll show you more infomations about me with these buttons that upon title. 
-      </strong>
-    </p>
+    <div>
+      <p>
+        <strong>
+          Hi, i'm Jin Her. also my english name is ellen but you can call me jin.
+          <br>I'll show you more infomations about me with these buttons that upon title. 
+        </strong>
+      </p>
+    </div>
+    <form>
+      <input class="secondInput" type ="button" value="Where am i from?">
+    </form>
+      <div class="boxContainer">
+        <p>
+          <strong>저는 태어난 곳은 경기도 안양이지만 자란곳은 전남 여수에서 자랐으며, 거즈음 23년 가까이 여수에서 지냈습니다. 여수에서 초중고 생활을 마치고 대학은 전주대학교를 졸업하였고 이후 대전에 일자리를 찾아서 여기까지 오게 되었습니다.</strong>
+        </p>
+        <img src="/yeosu.jpg" alt="yeosu_city" width = 500px, height = 300px>
+      </div>
+      <form>
+      <input class="secondInput" type ="button" value="Introducing my Family">
+      </form>
+      <div class="boxContainer">
+        <p>
+          <strong>제 가족은 저와 엄마, 아빠, 그리고 남동생 이렇게 구성되어있습니다. 엄마는 간호사로 현재까지 근무하고 계시고 마참가지로 아빠도 학원 영어강사로서 현재까지도 근무하고 계십니다. 동생은 아직 대학생인데 1학년과정을 마무리하는대로 바로 공군에 입대해서 현재는 사천의 공군기지에서 군복무중입니다.</strong>
+        </p>
+      </div>
+      <form>
+        <input class="secondInput" type ="button" value="My Hobbies">
+      </form>
+      <div class="boxContainer">
+        <p>
+          <strong>제 취미는 운동과 요리, 그리고 게임인데 운동은 주로 헬스장에서 운동하고 요리는 주로 양식을 즐겨 만드는 편입니다. 그리고 게임은 PC나 모바일보단 콘솔게임위주로 하는편이라서 장르에 따라 취향이 좀 갈립니다.</strong>
+        </p>
+      </div>
+      <form>
+        <input class="secondInput" type ="button" value="What i like is...">
+      </form>
+      <div class="boxContainer">
+        <p>
+          <strong>제가 좋아하는 요소들을 일단 음식은 텍스맥스라고해서 미국식 멕시코요리를 좋아하고, 음악은 주로 락장르 위주로 듣는데 그중에서 그린데이와 에이브릴 라빈을 좋아합니다.</strong>
+        </p>
+      </div>
+      <form>
+        <input class="secondInput" type ="button" value="What i don't like is...">
+      </form>
+      <div class="boxContainer">
+        <p>
+          <strong>그밖에 싫어하는 요소는 딸기가 들어간 음식을 싫어하고, 벌레, 그리고 양산형 로맨스 장르를 싫어합니다. 그밖에도 요즘시대 한국영화와 공포물을 별로 좋아하진 않습니다.</strong>
+        </p>
+      </div>
+    </form>
   </section>
+
   
 
   <script>
@@ -155,6 +209,7 @@ section{
     }    
 */
 
+/*
     const firstButton = document.querySelector('#Info_1');
     const secondButton = document.querySelector('#Info_2');
     const thirdButton = document.querySelector('#Info_3');
@@ -166,6 +221,12 @@ section{
     console.dir(buttonArray);
     console.dir(buttonArray.length);
 
+
+    const image = document.querySelector('img');
+    image.style.backgroundPositionY = 100;
+*/
+
+
     /*
     for(let i = 0; i < buttonArray.length; i++){
       console.log(buttonArray[i]);
@@ -174,6 +235,8 @@ section{
     }
     */
 
+
+    /*
 
     firstButton.addEventListener("click",function (){
       //window.location.href = 'http://127.0.0.1:5500/Infomation1.html';
@@ -200,6 +263,9 @@ section{
       //window.location.href('Information5.html');
       window.location.href = 'file:///C:/Users/Administrator/Documents/GitHubByEllen/KDT-2-Pro.C-1team/Information5.html';
     })
+
+    */
+
 
 
     /*
