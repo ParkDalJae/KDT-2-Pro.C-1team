@@ -4,13 +4,235 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Introducing Myself</title>
+  
+  
+  <!-- <link rel="stylesheet" href="/Infomation1.html"> -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/Infomation1.html">
+  <link rel="stylesheet" href="http://127.0.0.1:5500/Information2.html">
+  <link rel="stylesheet" href="http://127.0.0.1:5500/Information3.html">
+  <link rel="stylesheet" href="http://127.0.0.1:5500/Information4.html">
+  <link rel="stylesheet" href="http://127.0.0.1:5500/Information5.html">
+  <link rel="stylesheet" href="/Infomation1.html">
+  <link rel="stylesheet" href="/Information2.html">
+  <link rel="stylesheet" href="/Information3.html">
+  <link rel="stylesheet" href="/Information4.html">
+  <link rel="stylesheet" href="/Information5.html">
+
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  text-align: center;
+}
+
+body{
+  background-color: deepskyblue;
+  border: 15px groove white; 
+  width: 100vw;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header{
+  border: 5px solid white;
+  border-radius: 25px 25px;
+  width: 90vw;
+  height: 200px;
+  position: relative;
+  top: 70px;
+}
+nav{
+  position: relative;
+  top: 5px;
+}
+/*
+ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+li{
+  background-color: darkgrey;
+  border : 3px solid;
+  border-radius: 10px 10px;
+  text-size-adjust: 20px;
+  width : 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+*/
+form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+input{
+  width: 150px;
+  height: 50px;
+  background-color: darkgrey;
+  border : 3px solid;
+  border-radius: 10px 10px;
+  text-size-adjust: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section{
+  width: 80vw;
+  height: 150px;
+  border: 5px solid black;
+  position: relative;
+  top: 100px;
+}
+</style>
+
 </head>
 
 
 <body>
+
+  <header>
+    <nav>
+      <ul>
+        <form>
+          <button>
+            <input type="button" value="Info_1" id="Info_1">
+          </button>
+          <button>
+            <input type="button" value="Info_2" id="Info_2">
+          </button>
+          <button>
+            <input type="button" value="Info_3" id="Info_3">
+          </button>
+          <button>
+            <input type="button" value="Info_4" id="Info_4">
+          </button>
+          <button>
+            <input type="button" value="Info_5" id="Info_5">
+          </button>
+        </form>
+        <!-- <li>Info_1</li> -->
+        <!-- <li>Info_2</li> -->
+        <!-- <li>Info_3</li> -->
+        <!-- <li>Info_4</li> -->
+        <!-- <li>Info_5</li> -->
+      </ul>
+      </nav>
+    </nav>
+    <h1>&#128120Hi, My name is Jin.&#128120<br>&#128010It's good to see you.&#128010</h1>
+    <h3>I'm KDT 2nd student!!!</h3>
+  </header>
+
+
+  <section>
+    <p>
+      <strong>
+        Hi, i'm Jin Her. also my english name is ellen but you can call me jin.
+        I'm from yeosu but i graduated engineering of colledge in jeonju university.<br>and now i'm living in daejeon to looking for works 'bout year.
+        My parents are living in yeosu and my little brother is university student,<br>but now he's in airforce army in sacheon for complete his duty of Korea milittary.
+        I'll show you more infomations about me with these buttons that upon title. 
+      </strong>
+    </p>
+  </section>
   
-  <h1>Hi, This is Jin. It's good to see you.</h1>
+
+  <script>
+
+/*
+    function changePage (action, ){
+      if(action==="click"){
+        window.location.href('http://127.0.0.1:5500/Infomation1.html');
+      }
+      //const move = action;
+    }    
+*/
+
+    const firstButton = document.querySelector('#Info_1');
+    const secondButton = document.querySelector('#Info_2');
+    const thirdButton = document.querySelector('#Info_3');
+    const fourthButton = document.querySelector('#Info_4');
+    const fifthButton = document.querySelector('#Info_5');
+
+    //const buttonArray = ['firstButton','secondButton','thirdButton','fourthButton','fifthButton'];
+    const buttonArray = [firstButton,secondButton,thirdButton,fourthButton,fifthButton];
+    console.dir(buttonArray);
+    console.dir(buttonArray.length);
+
+    /*
+    for(let i = 0; i < buttonArray.length; i++){
+      console.log(buttonArray[i]);
+      console.dir(buttonArray[i]);
+      buttonArray[i].addEventListener("click",function(){});
+    }
+    */
+
+
+    firstButton.addEventListener("click",function (){
+      //window.location.href = 'http://127.0.0.1:5500/Infomation1.html';
+      //window.location.href = 'C:\Users\Administrator\Documents\GitHubByEllen\KDT-2-Pro.C-1team';
+      window.location.href = 'file:///C:/Users/Administrator/Documents/GitHubByEllen/KDT-2-Pro.C-1team/Infomation1.html';
+
+    secondButton.addEventListener("click",function (){
+      //window.location.href = 'http://127.0.0.1:5500/Infomation1.html';
+      window.location.href = 'file:///C:/Users/Administrator/Documents/GitHubByEllen/KDT-2-Pro.C-1team/Information2.html';
+    })
+
+    thirdButton.addEventListener("click",function (){
+      //window.location.href = 'http://127.0.0.1:5500/Infomation1.html';
+      window.location.href = 'file:///C:/Users/Administrator/Documents/GitHubByEllen/KDT-2-Pro.C-1team/Information3.html';
+    })
+
+    fourthButton.addEventListener("click",function (){
+      //window.location.href = 'http://127.0.0.1:5500/Infomation1.html';
+      window.location.href = 'file:///C:/Users/Administrator/Documents/GitHubByEllen/KDT-2-Pro.C-1team/Information4.html';
+    })
+
+    fifthButton.addEventListener("click",function (){
+      //window.location.href = 'http://127.0.0.1:5500/Infomation1.html';
+      //window.location.href('Information5.html');
+      window.location.href = 'file:///C:/Users/Administrator/Documents/GitHubByEllen/KDT-2-Pro.C-1team/Information5.html';
+    })
+
+
+    /*
+
+    firstButton = addEventListener("click", function changePage(num){
+      
+      switch(num){
+        case 1 :
+          window.location.href('http://127.0.0.1:5500/Infomation1.html');
+        break;
+        case 2 : 
+          window.location.href('http://127.0.0.1:5500/Infomation1.html');
+        break;
+        case 3 :
+          window.location.href('http://127.0.0.1:5500/Infomation1.html');
+        break;
+        case 4 :
+          window.location.href('http://127.0.0.1:5500/Infomation1.html');
+        break;
+        case 5 :
+          window.location.href('http://127.0.0.1:5500/Infomation1.html');
+        break;
+        }
+
+      //if(action==="click"){
+      //}
+    });
+
+    */
+
+  </script>
+
+
 
 
 </body>
