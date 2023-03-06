@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById("root");
+
+    function struct(tagName, parent){
+      let newName = document.createElement(tagName);
+      parent.appendChild(newName);
+    }
+    struct("div",root);
+    struct("div",root);
+    struct("div",root.children[1]);
+    struct("div",root.children[1]);
+
+    root.style.display = "flex";
+    root.style.flexDirection = "column";
+    root.style.width = "100vw";
+    root.style.height = "100vh";
+
+    root.children[0].style.border = "1px solid red";
+    root.children[0].style.width = "100vw";
+    root.children[0].style.height = "20vh";
+
+    root.children[1].style.border = "1px solid blue";
+    root.children[1].style.width = "100vw";
+    root.children[1].style.height = "80vh";
+    root.children[1].style.display = "flex";
+    root.children[1].style.flexDirection = "row";
+   
+    root.children[1].children[0].style.border = "1px solid green";
+    root.children[1].children[0].style.width = "80vw";
+    root.children[1].children[0].style.height = "80vh";
+    
+    root.children[1].children[1].style.border = "1px solid yellow";
+    root.children[1].children[1].style.width = "20vw";
+    root.children[1].children[1].style.height = "80vh";
+
+
+
+
+
+  </script>
+</body>
+</html>
