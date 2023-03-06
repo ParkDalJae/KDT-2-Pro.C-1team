@@ -7,6 +7,7 @@
   <title>Document</title>
 </head>
 <body>
+  
   <script>
 
     //태그만들기 + 갯수지정 가능
@@ -23,11 +24,11 @@
     }
 
     //텍스트 입력할때 사용
-    function tagTextInner (parentName, valueText) {
-      parentName.innerText=valueText;
+    function tagTextInner (locationName, valueText) {
+      locationName.innerText=valueText;
     }
-    function tagHTMLInner (parentName, valueText) {
-      parentName.innerHTML=valueText;
+    function tagHTMLInner (locationName, valueText) {
+      locationName.innerHTML=valueText;
     }
 
 
@@ -82,9 +83,9 @@
 
     //main구성
     const mainSectionNum = 1;
-    const mainIntroUlNum = 1;
+    const mainIntroUlNum = [1];
     //#introduce 안에서 내용 늘릴때 리스트 갯수 증가하기
-    const mainIntroUlLiNum = 1;
+    const mainIntroUlLiNum = [3];
     makeTag(main, 'section',mainSectionNum)
     setAttri(main.children[0],'id','introduce')
     const introduce = document.getElementById('introduce')
@@ -104,11 +105,11 @@
 
 
 
-    
+
 
     //footer 구성
     const footerUlNum = 1;
-    const footerUlLiNum = 2;
+    const footerUlLiNum = [2];
     makeTag(footer, 'ul', footerUlNum);
     for(let i=0;i<footerUlNum;i++){
       makeTag(footer.children[i],'li',footerUlLiNum[i]);
@@ -121,11 +122,75 @@
 
 
 
+    
+
+    //nav innerHTML 적용
+    const navLi1Text = ["&#8592;","만수무강",""]
+    const navLi2Text = ["박달재","허진","정성철","이경택","이세민"]
+    const navLiAllText = [navLi1Text, navLi2Text]
+    //밑에 for문은 건드리지 마세요
+    for(let i=0;i<navUlNum;i++){
+      for(let index=0;index<navUlLiNum[i];index++){
+        tagHTMLInner(nav.children[i].children[index],navLiAllText[i][index])
+      }
+    }
+
+
+
+
+
+    //header innerHTML 적용
+    const headerDivText = ["<h1>만수무강 팀원 이세민입니다.</h1>","작성자 : 이세민"]
+    for(let i=0; i < headerDivNum;i++){
+      tagHTMLInner(header.children[i],headerDivText[i])
+    }
+
+
+
+
+
+    //main innerHTML 적용
+
+    //list 텍스트 입력하는 곳
+    const mainImg = ["<img src='https://mblogthumb-phinf.pstatic.net/MjAxODEwMTFfMjI3/MDAxNTM5MjMyOTMyMjMy.o2ilgGvxeQENI6dsWaKesBRfgZS2nNGwiaj_1HXOYEwg.puc_6WOpVJL9BANQAwsCcaI6U78nvoJCDgCDRF2Hlr8g.JPEG.nationalrnd/yay-13065490.jpg?type=w800' alt='사진'>"];
+    const Sec1Ul1Li1Text = "일단 첫번째 섹션에서 첫번째 ul중 첫번째 리스트의 글을 작성하는 공간에 텍스트를 채워넣고 있습니다.";
+    const Sec1Ul1Li2Text = "그리고 첫번째 섹션에서 첫번째 ul중 두번째 리스트의 글을 작성하는 공간에 텍스트를 채워넣고 있습니다.";
+    //섹션 1의 ul 첫번째의 모든 li텍스트
+    const Sec1Ul1LiAllText = [mainImg,Sec1Ul1Li1Text,Sec1Ul1Li2Text];
+    //섹션 1의 모든 ul안의 텍스트
+    const Sec1UlAllText = [Sec1Ul1LiAllText];
+    //모든 섹션의 모든 텍스트
+    const AllSecUlLiText = [Sec1UlAllText];
+    //for문 손대지 마세요
+    for(let i=0;i<mainSectionNum;i++){
+      for(let index=0;index<mainIntroUlNum[i];index++){
+        for(let indexNum=0;indexNum<mainIntroUlLiNum[index];indexNum++){
+          tagHTMLInner(main.children[i].children[index].children[indexNum],AllSecUlLiText[i][index][indexNum])
+        }
+      }
+    }
+
+
+
+
+
+
+    //footer 텍스트 적용
+    const footerUlLi1Text = "footer에서 ul의 첫번째 li에 텍스트가 작성되는 공간에 입력하고 있습니다."
+    const footerUlLi2Text = "다음으로는 footer에서 ul의 두번째 li에 텍스트가 작성되는 공간에 입력하고 있습니다."
+    const footerUlliAllText = [footerUlLi1Text,footerUlLi2Text]
+    for(let i = 0;i<footerUlNum;i++){
+      for(let index=0;index<footerUlLiNum[i];index++){
+        tagHTMLInner(footer.children[i].children[index],footerUlliAllText[index])
+      }
+    }
+
 
     //HTML innerText 혹은 innerHTML 작성 끝줄------------------------------------
     //CSS 구성 시작--------------------------------------------------------------
 
 
   </script>
+
 </body>
 </html>
