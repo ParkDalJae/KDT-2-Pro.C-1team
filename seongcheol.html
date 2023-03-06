@@ -5,8 +5,143 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    /* *{box-sizing: border-box; justify-content: space-between}  */
+  </style>
 </head>
 <body>
-  
+  <div id="root"></div>
+
+  <script>
+    const body = document.body;
+    const root = document.getElementById("root");
+    
+    //root 
+    function elementMaker(tagname,parent) {
+    const element = document.createElement(tagname);
+    parent.appendChild(element);
+    };
+
+    //header
+    elementMaker("div",root);
+    root.children[0].setAttribute("id","header")
+    const header = document.getElementById("header");
+
+    //header > children[0]
+    elementMaker("div",header);
+    elementMaker("div",header.children[0]);
+    header.children[0].children[0].textContent = "만수무강"
+
+    //header > children[1]
+    elementMaker("div",header);
+    for(b=0; b<5; b++){
+    elementMaker("div",header.children[1]);
+    }
+    header.children[1].children[0].textContent = "박달재"
+    header.children[1].children[1].textContent = "허진"
+    header.children[1].children[2].textContent = "정성철"
+    header.children[1].children[3].textContent = "이경택"
+    header.children[1].children[4].textContent = "이세민"
+
+    //main
+    elementMaker("div",root);
+    root.children[1].setAttribute("id","main");
+    const main = document.getElementById("main");
+
+    //main > children[0]
+    elementMaker("div",main);
+    
+    //main > children[0] > children
+    for(let mainChilds_1=0; mainChilds_1<4; mainChilds_1++){
+      elementMaker("div",main.children[0]);
+    }
+    //main > children[0] > children[0]
+    elementMaker("div",main.children[0].children[0])
+    main.children[0].children[0].children[0].textContent = "자기소개!";
+    elementMaker("div",main.children[0].children[0])
+    main.children[0].children[0].children[1].textContent = "정성철";
+    //main > children[0] > children[1]
+    elementMaker("h1", main.children[0].children[1])
+    main.children[0].children[1].children[0].textContent = "정성철 페이지 입니다.";
+    main.children[0].children[2].textContent = "이미지칸";
+    main.children[0].children[3].textContent = "";
+
+
+    //main > children[1]
+    elementMaker("div",main);
+
+    //footer
+    elementMaker("div",root);
+    root.children[2].setAttribute("id","footer");
+    const footer = document.getElementById("footer");
+
+
+
+
+
+    //common style
+    body.style.boxSizing = "border-box";
+    body.style.margin = "0";
+
+    //root style
+    root.style.width = "100vw";
+    root.style.height = "200vh";
+
+    //header style
+    header.style.width = "100%";
+    header.style.height = "7%";
+    header.style.backgroundColor = "gray";
+    header.style.color = "white";
+
+    //header > children[0]
+    header.children[0].style.width = "100%";
+    header.children[0].style.height = "50%";
+    header.children[0].style.border = "1px solid black";
+    header.children[0].style.display = "flex";
+    header.children[0].style.flexDirection = "row";
+    header.children[0].style.justifyContent = "center";
+    header.children[0].style.alignItems = "center";
+
+     //header > children[1]
+    header.children[1].style.width = "100%";
+    header.children[1].style.height = "50%";
+    header.children[1].style.border = "1px solid black";
+    header.children[1].style.display = "flex";
+    header.children[1].style.flexDirection = "row";
+    header.children[1].style.justifyContent = "space-around";
+    header.children[1].style.alignItems = "center";
+
+    //main style
+    main.style.width = "100%";
+    main.style.height = "83%";
+    main.style.border = "1px solid gray";
+    main.style.display = "flex";
+    main.style.flexDirection = "row";
+    
+    //main > children[0]
+    main.children[0].style.width = "70%";
+    main.children[0].style.height = "100%";
+    main.children[0].style.margin = "5%";
+    
+
+    //main > children[0] > children[0]
+    main.children[0].children[0].style.display = "flex";
+    main.children[0].children[0].style.flexDirection = "row";
+    main.children[0].children[0].style.justifyContent = "space-between";
+    main.children[0].children[0].style.alignItems = "center";
+
+    //main > children[1]
+    main.children[1].style.width = "30%";
+    main.children[1].style.height = "100%";
+    main.children[1].style.border = "1px solid gray";
+    
+    //footer style
+    footer.style.width = "100%";
+    footer.style.height = "10%";
+    footer.style.border = "1px solid gray";
+
+
+
+  </script>
 </body>
 </html>
