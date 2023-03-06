@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    //태그만들기 + 갯수지정 가능
+    function makeTag (parentName, tagName, addNum) {
+      for (let i=0;i<addNum;i++){
+        const addTag = document.createElement(tagName);
+        parentName.appendChild(addTag);
+      }
+    }
+    
+    //태그 선택자 지정
+    function setAttri (parentName, tagName, tagText){
+      parentName.setAttribute(tagName,tagText);
+    }
+
+    //
+    function tagTextInner (parentName, valueText) {
+      parentName.innerText=valueText;
+    }
+
+
+    //body > #root 만듦 + 선언
+    makeTag(document.body,'div',1)
+    setAttri(document.body.children[1],"id","root")
+    const root = document.getElementById('root')
+
+
+    //root의 아이들 5개
+    const rootChildTag = ['nav','header','main','aside','footer']
+    for(let i=0;i<rootChildTag.length;i++){
+      makeTag(root,rootChildTag[i],1)
+      const querySelectorTag = function(){
+
+      }
+    }
+
+    //querySelector로 선언해줌
+    const nav = document.querySelector('nav')
+    const header = document.querySelector('header')
+    const main = document.querySelector('main')
+    const aside = document.querySelector('aside')
+    const footer = document.querySelector('footer')
+
+
+    //nav구성
+    makeTag(nav,'ul',2)
+    makeTag(nav.children[0],'li',3)
+    makeTag(nav.children[1],'li',9)
+
+
+
+  </script>
+</body>
+</html>
