@@ -22,25 +22,34 @@
       parentName.setAttribute(tagName,tagText);
     }
 
-    //
+    //텍스트 입력할때 사용
     function tagTextInner (parentName, valueText) {
       parentName.innerText=valueText;
     }
+    function tagHTMLInner (parentName, valueText) {
+      parentName.innerHTML=valueText;
+    }
+
+
+    //function 모음 끝줄----------------------------------------------------------------
+    //HTML MarkUp 시작-----------------------------------------------------------------
+
 
 
     //body > #root 만듦 + 선언
-    makeTag(document.body,'div',1)
+    const makeBodyDiv = 1;
+    makeTag(document.body,'div',makeBodyDiv)
     setAttri(document.body.children[1],"id","root")
     const root = document.getElementById('root')
 
 
+
+
     //root의 아이들 5개
     const rootChildTag = ['nav','header','main','aside','footer']
+    //이 for문은 건드리지 말것
     for(let i=0;i<rootChildTag.length;i++){
       makeTag(root,rootChildTag[i],1)
-      const querySelectorTag = function(){
-
-      }
     }
 
     //querySelector로 선언해줌
@@ -51,11 +60,70 @@
     const footer = document.querySelector('footer')
 
 
-    //nav구성
-    makeTag(nav,'ul',2)
-    makeTag(nav.children[0],'li',3)
-    makeTag(nav.children[1],'li',9)
 
+
+    //nav구성
+    //총 ul갯수
+    const navUlNum = 2;
+    //총 ul갯수대로 li의 갯수를 적으면됨
+    const navUlLiNum = [3,5];
+    makeTag(nav,'ul',navUlNum);
+    for(let i=0; i<navUlNum;i++){
+      makeTag(nav.children[i],'li',navUlLiNum[i])
+    }
+
+
+
+    //header 구성
+    const headerDivNum = 2;
+    makeTag(header, 'div',headerDivNum)
+    
+
+
+    //main구성
+    const mainSectionNum = 1;
+    const mainIntroUlNum = 1;
+    //#introduce 안에서 내용 늘릴때 리스트 갯수 증가하기
+    const mainIntroUlLiNum = 1;
+    makeTag(main, 'section',mainSectionNum)
+    setAttri(main.children[0],'id','introduce')
+    const introduce = document.getElementById('introduce')
+    makeTag(introduce,'ul',mainIntroUlNum)
+    makeTag(introduce.children[0],'li',mainIntroUlLiNum)
+
+
+
+
+    //aside 구성
+    const asideUlNum = 3;
+    const asideUlLiNum = [5,5,5];
+    makeTag(aside,'ul',asideUlNum)
+    for(let i=0;i<asideUlNum;i++){
+      makeTag(aside.children[i],'li',asideUlLiNum[i])
+    }
+
+
+
+    
+
+    //footer 구성
+    const footerUlNum = 1;
+    const footerUlLiNum = 2;
+    makeTag(footer, 'ul', footerUlNum);
+    for(let i=0;i<footerUlNum;i++){
+      makeTag(footer.children[i],'li',footerUlLiNum[i]);
+    }
+
+
+
+    //HTML markUp 동적구성 페이지 끝줄 -------------------------------------------
+    //HTML innerText 혹은 innerHTML 작성 시작줄----------------------------------
+
+
+
+
+    //HTML innerText 혹은 innerHTML 작성 끝줄------------------------------------
+    //CSS 구성 시작--------------------------------------------------------------
 
 
   </script>
