@@ -86,6 +86,7 @@ form{
   justify-content: center;
   align-items: center;
 }
+/*
 .secondInput{
   width: 60vw;
   height: 50px;
@@ -96,6 +97,17 @@ form{
   justify-content: center;
   align-items: center;
 }
+button{
+  width: 60vw;
+  height: 50px;
+  background-color: powderblue;
+  border : 3px solid gray;
+  border-radius: 8px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+*/
 section{
   background-color: dodgerblue;
   width: 80vw;
@@ -198,7 +210,7 @@ section{
       </form>
       <div class="boxContainer">
         <p>
-          <strong>그밖에 싫어하는 요소는 딸기가 들어간 음식을 싫어하고, 벌레, 그리고 양산형 로맨스 장르를 싫어합니다. 그밖에도 무억이 되었든간에 자기 사상 및 의견을 강요받는걸 별로 좋아하진 않습니다.</strong>
+          <strong>그밖에 싫어하는 요소는 생토마토와 딸기가 들어간 음식을 싫어하고, 벌레, 그리고 양산형 로맨스 장르를 싫어합니다. 그밖에도 무엇이 되었든간에 누군가가 자기 사상 및 의견을 제 의견도 무시한채 강요하는걸 좋아하진 않습니다.</strong>
         </p>
       </div>
     </form>
@@ -208,8 +220,109 @@ section{
 
   <script>
 
-    const favorite = document.querySelectorAll(".boxContainer")[3]; 
-    console.dir(favorite);
+    const button = document.querySelectorAll("input");
+    console.dir(button);
+
+
+    function openBoxHome (boolValue){
+      //const value = true;
+      if(boolValue == true){
+       document.querySelectorAll('input')[5].style.display = 'block';
+      }
+    }
+
+
+    function openBoxFamily (boolValue){
+      //const value = true;
+      if(boolValue == true){
+       document.querySelectorAll('input')[6].style.display = 'block';
+      }
+    }
+
+
+    function openBoxHobbies (boolValue){
+      //const value = true;
+      if(boolValue == true){
+       document.querySelectorAll('input')[7].style.display = 'block';
+      }
+    }
+
+
+    function openBoxFavor (boolValue){
+      //const value = true;
+      if(boolValue == true){
+       document.querySelectorAll('input')[8].style.display = 'block';
+      }
+    }
+
+
+    function openBoxHate (boolValue){
+      //const value = true;
+      if(boolValue == true){
+       document.querySelectorAll('input')[9].style.display = 'block';
+      }
+    }
+
+
+
+    const buttonForHome = document.querySelectorAll("input")[5];
+    buttonForHome.style.width = '320px';
+    buttonForHome.style.height = '30px';
+    buttonForHome.style.backgroundColor = 'powderblue';
+    buttonForHome.style.border = '3px solid gray';
+    buttonForHome.style.borderRadius = '8px 8px';
+
+    const buttonForFamily = document.querySelectorAll("input")[6];
+    buttonForFamily.style.width = '320px';
+    buttonForFamily.style.height = '30px';
+    buttonForFamily.style.backgroundColor = 'powderblue';
+    buttonForFamily.style.border = '3px solid gray';
+    buttonForFamily.style.borderRadius = '8px 8px';
+
+    const buttonForHobbies = document.querySelectorAll("input")[7];
+    buttonForHobbies.style.width = '320px';
+    buttonForHobbies.style.height = '30px';
+    buttonForHobbies.style.backgroundColor = 'powderblue';
+    buttonForHobbies.style.border = '3px solid gray';
+    buttonForHobbies.style.borderRadius = '8px 8px';
+
+    const buttonForFavor = document.querySelectorAll("input")[8];
+    buttonForFavor.style.width = '320px';
+    buttonForFavor.style.height = '30px';
+    buttonForFavor.style.backgroundColor = 'powderblue';
+    buttonForFavor.style.border = '3px solid gray';
+    buttonForFavor.style.borderRadius = '8px 8px';
+
+    const buttonForHate = document.querySelectorAll("input")[9];
+    buttonForHate.style.width = '320px';
+    buttonForHate.style.height = '30px';
+    buttonForHate.style.backgroundColor = 'powderblue';
+    buttonForHate.style.border = '3px solid gray';
+    buttonForHate.style.borderRadius = '8px 8px';
+
+
+    const opValue = true;
+
+    if(buttonForHome.value === "Where am i from?"){
+        buttonForHome.addEventListener("click", openBoxHome(opValue));
+    }
+
+    if(buttonForFamily.value === "Introducing my Family"){
+        buttonForHome.addEventListener("click", openBoxFamily(opValue));
+    }
+
+    if(buttonForHobbies.value === "My Hobbies"){
+        buttonForHome.addEventListener("click", openBoxHobbies(opValue));
+    }
+
+    if(buttonForFavor.value === "What i like is..."){
+        buttonForHome.addEventListener("click", openBoxFavor(opValue));
+    }
+
+    if(buttonForHate.value === "What i don't like is..."){
+        buttonForHome.addEventListener("click", openBoxHate(opValue));
+    }
+
     /*
     function showBox(){
       if(value === "Where am i from?"){
