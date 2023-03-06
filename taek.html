@@ -1,52 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+  *{
+    margin: 0;
+    box-sizing: border-box;
+  }
+</style>
 <body>
   <div id="root"></div>
   <script>
     const root = document.getElementById("root");
 
-    function struct(tagName, parent){
+    // div구조를 생성하고 appendchile를 사용해 관계 연결하기
+    function struct(tagName, parent) {
       let newName = document.createElement(tagName);
       parent.appendChild(newName);
     }
-    struct("div",root);
-    struct("div",root);
-    struct("div",root.children[1]);
-    struct("div",root.children[1]);
+    struct("div", root);
+    struct("div", root);
+    for (let i = 0; i < 3; i++) {
+      struct("div", root.children[0]);
+    }
+    for (let i = 0; i < 5; i++) {
+      struct("div", root.children[0].children[2]);
+    }
 
+    struct("div", root.children[1]);
+    struct("div", root.children[1]);
+
+    // 여기서 부터 css
     root.style.display = "flex";
     root.style.flexDirection = "column";
-    root.style.width = "100vw";
-    root.style.height = "100vh";
+    root.style.width = "200vw";
+    root.style.height = "200vh";
 
-    root.children[0].style.border = "1px solid red";
-    root.children[0].style.width = "100vw";
-    root.children[0].style.height = "20vh";
+    // header
+    function header(element) {
+      element.border = "1px solid red";
+      element.width = "100vw";
+      element.height = "20vh";
+      element.position = "fixed";
+    }
+    header(root.children[0].style);
 
+    // header1 
+    function header1(element) {
+      element.style.border = "1px solid red";
+      element.style.width = "100vw";
+      element.style.height = "10vh";
+      element.style.display = "flex";
+      element.style.justifyContent = "space-around";
+      element.style.alignItems = "center";
+      element.innerHTML = "머니s";
+      
+    }
+    header1(root.children[0].children[0]);
+    console.dir(root.style);
+    // header2 header의 줄
+    function header2(element) {
+      element.border = "1px solid black";
+      element.width = "100vw";
+      element.height = "0.01vh";
+    }
+    header2(root.children[0].children[1].style);
+
+    // header3
+    function header3(element) {
+      element.border = "1px solid red";
+      element.width = "100vw";
+      element.height = "10vh";
+      element.display = "flex";
+      element.flexDirection = "row";
+      element.justifyContent = "space-around";
+      element.alignItems = "center";
+    }
+    header3(root.children[0].children[2].style);
+
+    // header4 작은 네모박스
+    function header4(element) {
+      for (let j = 0; j < 5; j++) {
+        element.children[j].style.border = "1px solid black";
+        element.children[j].style.width = "13vw";
+        element.children[j].style.height = "5vh";
+        element.children[j].style.display = "flex";
+        element.children[j].style.alignItems = "center";
+        element.children[j].style.justifyContent = "center";
+      }
+    }
+    header4(root.children[0].children[2]);
+
+    function header4content(element){
+    root.children[0].children[2].children[0].innerHTML = "IT";
+    root.children[0].children[2].children[1].innerHTML = "여가";
+    root.children[0].children[2].children[2].innerHTML = "스포츠";
+    root.children[0].children[2].children[3].innerHTML = "뉴스";
+    root.children[0].children[2].children[4].innerHTML = "이슈";
+    }
     root.children[1].style.border = "1px solid blue";
     root.children[1].style.width = "100vw";
-    root.children[1].style.height = "80vh";
+    root.children[1].style.height = "180vh";
     root.children[1].style.display = "flex";
     root.children[1].style.flexDirection = "row";
-   
+    root.children[1].style.position = "relative";
+    root.children[1].style.top = "20vh";
+
     root.children[1].children[0].style.border = "1px solid green";
     root.children[1].children[0].style.width = "80vw";
-    root.children[1].children[0].style.height = "80vh";
-    
+    root.children[1].children[0].style.height = "180vh";
+    root.children[1].children[0].innerHTML = "안녕하세요 이경택입니다.";
+
     root.children[1].children[1].style.border = "1px solid yellow";
     root.children[1].children[1].style.width = "20vw";
-    root.children[1].children[1].style.height = "80vh";
-
-
-
-
+    root.children[1].children[1].style.height = "180vh";
 
   </script>
 </body>
+
 </html>
