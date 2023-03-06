@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="header"><!-- rgb 125 122 144 -->
+      <!-- 로고, 페이지, 구독  -->
+      <!-- <div>
+      
+      </div> -->
+      <!-- 메뉴(주요뉴스 숏폼 경제 정치 사회 it 세계 생활 랭킹) -->
+      <!-- <div>
+
+      </div> -->
+    </div>
+    <div id="body-wrap">
+      <div id="main">
+        <!-- 기사제목 -->
+        <!-- 기사 내용 -->
+        <!-- 기사 하단(댓글,별점 등) -->
+      </div>
+      <div id="side">
+        <!-- 사이드 4개 -->
+      </div>
+
+    </div>
+  </div>
+  <script>
+    const root = document.getElementById('root')
+    const header = document.getElementById('header')
+    const bodyWrap = document.getElementById('body-wrap')
+    const main = document.getElementById('main')
+    const asideDiv = document.getElementById('side')
+    const mansuList = ["박달재","허진","정성철","이경택","이세민"]
+    
+    // header
+    header.style.display = "flex"
+    header.style.flexDirection = "column"
+    header.style.alignItems = "center"
+    header.style.backgroundColor = "rgb(125,122,144)"
+    header.style.height = "100px"
+    
+    let headerUpDiv = document.createElement('div')
+    header.appendChild(headerUpDiv)
+    headerUpDiv.style.display = "flex"
+    headerUpDiv.style.alignItems = "center"
+    headerUpDiv.style.justifyContent = "center"
+    headerUpDiv.style.color = "white"
+    headerUpDiv.style.width = "100%"
+    headerUpDiv.style.height = "50px"
+    // headerUpDiv.style.border = "1px black solid"
+    headerUpDiv.style.fontSize = "30px"
+    headerUpDiv.style.fontWeight = "bold"
+    headerUpDiv.innerHTML = "만수무강"
+    
+    let headerDownDiv = document.createElement('div')
+    header.appendChild(headerDownDiv)
+    headerDownDiv.style.display = "flex"
+    headerDownDiv.style.alignItems = "center"
+    headerDownDiv.style.justifyContent = "center"
+    headerDownDiv.style.color = "white"
+    headerDownDiv.style.width = "100%"
+    headerDownDiv.style.height = "50px"
+    // headerDownDiv.style.border = "1px black solid"
+    
+    // headerDownDiv.innerHTML = "상단 아랫줄"
+    for(let i=0;i<5;i++){
+      let downDivCre = document.createElement('div')
+      downDivCre.style.display = "flex"
+      downDivCre.style.alignItems = "center"
+      downDivCre.style.justifyContent = "center"
+      downDivCre.style.width = "150px"
+      downDivCre.style.height = "100%"
+      // downDivCre.style.border = "1px black solid"
+      headerDownDiv.appendChild(downDivCre)
+      headerDownDiv.children[i].innerHTML = mansuList[i]
+    }
+    
+    // body-wrap
+    bodyWrap.style.display = "flex"    
+    bodyWrap.style.justifyContent = "center"    
+    
+    // main
+    main.style.display = "flex"
+    main.style.flexDirection = "column"
+    main.style.justifyContent = "top"
+    main.style.alignItems = "center"
+    main.style.width = "750px"
+    // main.style.height = "2300px"
+    // main.style.border = "1px black solid"
+    
+    // main-제목
+    const titleDiv = document.createElement('div')
+    main.appendChild(titleDiv)
+    titleDiv.appendChild(document.createElement('h1'))
+    titleDiv.style.margin = "50px"
+    titleDiv.children[0].innerHTML = "안녕하세요 박달재의 페이지입니다." 
+    
+    // main-사진
+    const picDiv = document.createElement('div')
+    picDiv.id = "mianPic"
+    main.appendChild(picDiv)
+    // picDiv.innerHTML = "사진"
+    picDiv.style.width = "90%"
+    picDiv.style.height = "450px"
+    console.dir(picDiv.style)
+    picDiv.style.backgroundImage = "url(./acat.jpg)"
+    picDiv.style.backgroundRepeat = "round"
+
+    // main-내용
+    const secDiv = document.createElement('div')
+    main.appendChild(secDiv)
+    // secDiv.innerHTML = "내용"
+    for(let i=0;i<4;i++){
+      let creEleP = document.createElement('p')
+      // creEleP.innerHTML = "lorem"
+      creEleP.style.margin = "20px"
+      secDiv.appendChild(creEleP)
+      
+    }
+    secDiv.children[0].innerHTML = "첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 "
+    secDiv.children[1].innerHTML = "첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 "
+    secDiv.children[2].innerHTML = "첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 "
+    secDiv.children[3].innerHTML = "첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 첫번째 문단 블라블라블라블라 "
+    
+    // aside
+    // asideDiv.innerHTML = "어사이드"
+    asideDiv.style.width = "300px"
+    // asideDiv.style.height = "2300px"
+    // asideDiv.style.border = "1px black solid"
+    asideDiv.style.display = "flex"
+    asideDiv.style.flexDirection = "column"
+
+    for(let i=0;i<4;i++){
+      const asiDiv = document.createElement('div')
+      asiDiv.style.widows = "100%"
+      asiDiv.style.height = "300px"
+      asiDiv.style.border = "1px black solid"
+      asideDiv.appendChild(asiDiv)
+      let asiH2 = document.createElement('h2')
+      asiH2.style.margin = "20px"
+      asiDiv.appendChild(asiH2)
+      let asiP = document.createElement('p')
+      asiP.style.margin = "20px"
+      asiDiv.appendChild(asiP)
+    }
+    
+    // aside Div 1
+    asideDiv.children[0].children[0].innerHTML = "h2부분"
+    asideDiv.children[0].children[1].innerHTML = "p부분"
+    // aside Div 2
+    asideDiv.children[1].children[0].innerHTML = "h2부분"
+    asideDiv.children[1].children[1].innerHTML = "p부분"
+    // aside Div 3
+    asideDiv.children[2].children[0].innerHTML = "h2부분"
+    asideDiv.children[2].children[1].innerHTML = "p부분"
+    // aside Div 4
+    asideDiv.children[3].children[0].innerHTML = "h2부분"
+    asideDiv.children[3].children[1].innerHTML = "p부분"
+
+
+  </script>
+</body>
+</html>
