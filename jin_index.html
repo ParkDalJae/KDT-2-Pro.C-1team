@@ -31,12 +31,13 @@ body{
   background-color: deepskyblue;
   border: 15px groove white; 
   width: 100vw;
-  height: 200vh;
+  height: 300vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 header{
+  background-color: dodgerblue;
   border: 5px solid white;
   border-radius: 25px 25px;
   width: 90vw;
@@ -77,8 +78,9 @@ form{
   margin: 0;
   width: 150px;
   height: 50px;
-  background-color: darkgrey;
-  border : 3px solid;
+  background-color: darkturquoise;
+  opacity: 85%;
+  border : 3px solid white;
   border-radius: 10px 10px;
   display: flex;
   justify-content: center;
@@ -88,16 +90,18 @@ form{
   width: 60vw;
   height: 50px;
   background-color: powderblue;
-  border : 3px solid;
+  border : 3px solid gray;
   border-radius: 8px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 section{
+  background-color: dodgerblue;
   width: 80vw;
-  height: 150vh;
-  border: 5px solid black;
+  height: 250vh;
+  border: 5px solid white;
+  border-radius: 25px 25px;
   position: relative;
   top: 100px;
   display: flex;
@@ -107,16 +111,16 @@ section{
 }
 .boxContainer{
   width: 60vw;
-  height: 450px;
-  border: 3px dotted black;
-  text-align: center;
+  height: 150vh;
+  background-color: cornflowerblue;
+  border: 3px dotted white;
+  border-radius: 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 </style>
-
 </head>
 
 
@@ -136,7 +140,6 @@ section{
         <!-- <li>Info_3</li> -->
         <!-- <li>Info_4</li> -->
         <!-- <li>Info_5</li> -->
-      </nav>
     </nav>
     <h1>&#128120Hi, My name is Jin.&#128120<br>&#128010It's good to see you.&#128010</h1>
     <h3>I'm KDT 2nd student!!!</h3>
@@ -159,7 +162,7 @@ section{
         <p>
           <strong>저는 태어난 곳은 경기도 안양이지만 자란곳은 전남 여수에서 자랐으며, 거즈음 23년 가까이 여수에서 지냈습니다. 여수에서 초중고 생활을 마치고 대학은 전주대학교를 졸업하였고 이후 대전에 일자리를 찾아서 여기까지 오게 되었습니다.</strong>
         </p>
-        <img src="/yeosu.jpg" alt="yeosu_city" width = 500px, height = 300px>
+        <img src="/yeosu.jpg" alt="yeosu_city" width = 300px, height = 200px>
       </div>
       <form>
       <input class="secondInput" type ="button" value="Introducing my Family">
@@ -176,6 +179,8 @@ section{
         <p>
           <strong>제 취미는 운동과 요리, 그리고 게임인데 운동은 주로 헬스장에서 운동하고 요리는 주로 양식을 즐겨 만드는 편입니다. 그리고 게임은 PC나 모바일보단 콘솔게임위주로 하는편이라서 장르에 따라 취향이 좀 갈립니다.</strong>
         </p>
+        <img src="/exercise.jpg" alt="texmax" width = 300px, height = 200px>
+        <img src="/nintendo.png" alt="texmax" width = 300px, height = 200px>
       </div>
       <form>
         <input class="secondInput" type ="button" value="What i like is...">
@@ -184,13 +189,16 @@ section{
         <p>
           <strong>제가 좋아하는 요소들을 일단 음식은 텍스맥스라고해서 미국식 멕시코요리를 좋아하고, 음악은 주로 락장르 위주로 듣는데 그중에서 그린데이와 에이브릴 라빈을 좋아합니다.</strong>
         </p>
+        <img src="/texmax.jpg" alt="texmax" width = 300px, height = 200px>
+        <img src="/avril_lavigne.png" alt="avril_lavigne" width = 300px, height = 200px>
+        <img src="/green_day.jpg" alt="green_day" width = 300px, height = 200px>
       </div>
       <form>
         <input class="secondInput" type ="button" value="What i don't like is...">
       </form>
       <div class="boxContainer">
         <p>
-          <strong>그밖에 싫어하는 요소는 딸기가 들어간 음식을 싫어하고, 벌레, 그리고 양산형 로맨스 장르를 싫어합니다. 그밖에도 요즘시대 한국영화와 공포물을 별로 좋아하진 않습니다.</strong>
+          <strong>그밖에 싫어하는 요소는 딸기가 들어간 음식을 싫어하고, 벌레, 그리고 양산형 로맨스 장르를 싫어합니다. 그밖에도 자기 사상 및 의견을 강요받는걸 별로 좋아하진 않습니다.</strong>
         </p>
       </div>
     </form>
@@ -199,6 +207,22 @@ section{
   
 
   <script>
+
+    const favorite = document.querySelectorAll(".boxContainer")[3]; 
+    console.dir(favorite);
+    /*
+    function showBox(){
+      if(value === "Where am i from?"){
+        document.querySelector().style.display = "block";
+      }
+    }
+
+    const button1 = document.querySelector(".secondInput");
+    button1.addEventListener("click", showBox());
+
+    const boxWidth = document.querySelector(".boxContainer");
+*/
+
 
 /*
     function changePage (action, ){
