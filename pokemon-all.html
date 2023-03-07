@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById("root");
+    //xhr
+    const xhr = new XMLHttpRequest();
+    const _URL = `https://pokeapi.co/api/v2/pokemon/`;
+    
+    //get 방식
+    xhr.open('GET', _URL); 
+    xhr.send();
+    //load 이벤트
+    xhr.addEventListener('load', function() {
+      console.log(xhr.response);
+      const _PokeData = JSON.parse(xhr.response);
+      //_PokeData에 있는 객체 확인
+      console.dir(_PokeData);
+      //0~1008의 숫자중 하나 랜덤으로 나온다.
+      //랜덤숫자를 주소에다가 넣었다.
+      for(let all=0; all<1008; all++){
+      const images = [`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${all}.png`];
+      const img = document.createElement('img');
+      img.setAttribute("src",`${images}`)
+      root.appendChild(img);
+      // const number = [`https://pokeapi.co/api/v2/pokemon/${random}`];
+      }
+    });
+  </script>
+</body>
+</html>
