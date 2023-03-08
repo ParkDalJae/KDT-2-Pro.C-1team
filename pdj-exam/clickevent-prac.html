@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+    정적(static)이다, 동적(dynamic)이다 라는 모호한 개념이 점점 더 두각되는 형태는 단연 '이벤트'의 역할입니다. 특히 최종소비자의 컴퓨터 사용경험에서 빠질 수 없는 클릭을 통해 '동적으로 태그를 생성한다', 조금더 쉽게 풀어서 
+
+    클릭하면 태그가 만들어지는
+
+    애플리케이션을 담은 본 예제는, 그동안 훈련생분들이 노력하여 얻어낸 이해의 보상입니다. 코드는 짧게 작성 되었지만, 의미는 깊습니다.
+    응용, 활용면에서 매우 유용한 예제이므로 작업에 활용하시기 바랍니다.
+    */
+    /* 부모 root */
+    *{
+      
+    }
+    #root{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 자식 둘, 편의상 id로 명시함 */
+    #element-maker{
+      width: 100px;
+      height: 100px;
+      background-color: cadetblue;
+    }
+    #container{
+      display: flex;
+      flex-wrap: wrap;
+      width: 500px;
+      border: 1px black solid;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <button id="element-maker">Click!</button>
+    <div id="container"></div>
+  </div>
+  <!-- 
+    1. 예제의 특성을 고려하여 초점이 될 개념에 집중하기 위해 정적으로 작성하였다.
+    2. 동적으로 제작&&정적으로 작성 두가지 방법 모두 자유롭게 작성 할 수 있는지 점검한다
+  -->
+  <script>
+    // 스크립트에서 클릭이벤트의 트리거로 elementMaker을 선언. 인터렉션을 하기 위해 만듦
+    const elementMaker = document.getElementById('element-maker');
+    // 스크립트에서 addEventListener의 인터렉션 결과를 담기 위한 container변수를 선언.
+    const container = document.getElementById('container');
+    // elementMaker버튼을 클릭시 addEventListener의 펑션을 실행
+    elementMaker.addEventListener('click',function(){
+      // 임시변수 newElement를 선언하고 createElement메소드를 실행하여 div속성을 부여함
+      const newElement = document.createElement('div')
+      // newElement의 속성을 할당
+      newElement.textContent = "새로운 요소입니다."
+      newElement.style.width = "100px"
+      newElement.style.height = "100px"
+      newElement.style.border = "1px black solid"
+      newElement.style.boxSizing = "border-box"
+      // container의 자식 개채로 newElement를 붙임
+      container.appendChild(newElement)
+
+    })
+  </script>
+</body>
+</html>

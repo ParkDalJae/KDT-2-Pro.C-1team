@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      overflow-x: hidden;
+    }
+    header{
+      width: 100vw;
+      height: 100px;
+      background-color: #333;
+      /* position fixed를 통해 브라우저 기준으로 고정 */
+      position: fixed;
+      top: 0;
+      /* flex set */
+      /* button 태그들 간단히 가운데 정렬 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    header>button{
+      width: 200px;
+      height: 50px;
+      margin: 10px;
+    }
+    #root{
+      width: 100vw;
+      height: 100vh;
+      background-color: #eee;
+      /* flex set */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <button id="plus">plus</button>
+    <button id="minus">minus</button>
+    <button id="no5del">no.5 Del</button>
+  </header>
+  <div id="root"></div>
+  <script>
+    // 편하게 관리하기 위해 임의의 객체로 wrapping한다
+    const domElements = {
+      plus : document.getElementById('plus'),
+      minus : document.getElementById('minus'),
+      root : document.getElementById('root'),
+      no5Del : document.getElementById('no5del'),
+    }
+    /*
+    아래의 elementmaker 함수는 두가지의 paramater를 갖는다.
+    1. tag의 종류가 될 tagName(String)
+    2. tag 안의 텍스트 부분 이 될 textValue
+    나머지 스타일링 관련 실행 구문은 리터럴이다(표시정도로만 확인하기 위함)
+
+    결과적으로 elementMaker함수를 호출한다면, 태그 요소를 만들고, 텍스트를 넣어주고, 스타일링을 해주는 함수가 된다. 하지만 자식을 ㅗ붙이는 실행구문은 없다.
+    */
+    function elementMaker(tagName,textValue){    //elemnetMaker 함수 생성
+      const newElement = document.createElement(tagName)
+      newElement.textContent = textValue
+      newElement.style.width = "100px"
+      newElement.style.height = "100px"
+      newElement.style.border = "1px blue solid"
+      return newElement
+    }
+
+    /*
+    plus라는 아이디를 가진 button태그에 click이벤트를 장착했다.
+    이벤트가 발생한다면, elementMaker함수를 호출하고, 적절한 매개변수를 넣었을 때, 해당 paramater에 맞는 tag와 text를 넣은 함수를 #root라는 div에 자식으로 붙인다.
+    자식으로 붙여주는 시점이 '이벤트가 발생했을 때'라는 점이 주요 관점이다.
+    */
+    domElements.plus.addEventListener('click',function(){ //plus버튼요소에 addEventlistener 부여
+      let appendElement = elementMaker('div',"동적으로 만드는 "+domElements.root.children.length+"번 요소다!")
+      domElements.root.appendChild(appendElement)
+    })
+
+    /*
+    minus라는 아이디를 가진 button태그에 click 이벤트를 장착한다.
+    해당 이벤트는 if문이 들어가 있어서 만약 root라는 객체 안에 첫 child가 null값이 아니라면,
+    임의의 변수를 선언해 맨 처음 child를 할당 한 뒤, 해당 child를 removeChild 메소드로 지운다.
+    */
+    domElements.minus.addEventListener('click',function(){
+      if(domElements.root.firstElementChild !== null){
+        // root라는 아이디를 가진 div태그의 자식요소가 존재하지 않는다면
+        // null은 없음이라는 뜻이고, !== null은 null이 아니라면, 이라는 뜻
+        let removeElement = domElements.root.firstElementChild
+        // root태그의 자식요소를 removeElement라는 변수에 할당한 뒤
+        domElements.root.removeChild(removeElement)
+        // removeChild 메소드를 이용해 제거한다
+      }else{
+        alert("더이상 삭제 할 요소가 없습니다.")
+        // 만일 root라는 아이디의 child요소가 null이라면 삭제할 요소가 없다는 알람을 띄운다.
+      }
+    })
+    domElements.no5Del.addEventListener('click',function(){
+      if(domElements.root.children.length >= 5){
+        // let removeElement = domElements.root.children[4]
+        // domElements.root.removeChild(removeElement)
+        let removeElement = domElements.root.children[4]
+        domElements.root.removeChild(removeElement)
+        // removeChild 메소드를 이용해 제거한다
+      }else{
+        alert("5개 미만입니다.")
+      }
+    })
+  </script>
+</body>
+</html>
