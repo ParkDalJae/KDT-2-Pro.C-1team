@@ -41,7 +41,7 @@
     // })
     
     const xhr1 = new XMLHttpRequest();
-    const _URLDex = 'https://pokeapi.co/api/v2/pokedex/6' 
+    const _URLDex = 'https://pokeapi.co/api/v2/pokedex/6' //전체넘버 추출용
     // const _URLMonDexObject = {   //객체로 저장이 가능한가?
     //   lemita : tatata,
     // }
@@ -71,7 +71,7 @@
     const xhr2 = new XMLHttpRequest();
     
     // for(let i=0;i<)
-    const _URLMon = `https://pokeapi.co/api/v2/pokemon/666`//포켓몬
+    const _URLMon = `https://pokeapi.co/api/v2/pokemon/666`//포켓몬개별 이름
     
     xhr2.open('GET',_URLMon)
     xhr2.send();
@@ -87,7 +87,7 @@
     })
     
     const xhr3 = new XMLHttpRequest();
-    const _URLManual = `https://pokeapi.co/api/v2/pokemon-species/6`//포켓몬 설명
+    const _URLManual = `https://pokeapi.co/api/v2/pokemon-species/6`//포켓몬 넘버(한글이름 들어있는 부분)
     
     xhr3.open('GET',_URLManual)
     xhr3.send();
@@ -97,11 +97,16 @@
       const _PokeData = JSON.parse(xhr3.response)
       
       const h1 = document.createElement('h1')
-      h1.textContent = _PokeData.name
-      root.appendChild(h1)
       console.dir(_PokeData) 
       console.dir("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/6") 
-      console.dir(_PokeData.names[2].name) 
+      console.dir(_PokeData.names[2].language.name) 
+      for(let i=0;i<_PokeData.names.length;i++){ // 포켓몬 한글 이름
+        if(_PokeData.names[i].language.name==="ko"){
+          
+          h1.textContent = _PokeData.names[i].name
+          root.appendChild(h1)
+        }
+      }
     })
     </script>
 </body>
