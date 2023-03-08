@@ -10,8 +10,18 @@
       margin: 0px;
       padding: 0px;
       box-sizing: border-box;
+      
     }
-    
+    #body-wrap{
+      display: flex;
+    }
+    #side>div{
+      display: flex;
+    }
+    #main{
+      display: flex;
+      width: 700px;
+    }
   </style>
 </head>
 <body>
@@ -19,12 +29,51 @@
     <div id="header"><!-- rgb 125 122 144 -->
 
     </div>
+    <div id="nav">
+      <select name="kate" id="sch">
+        <option value="irem">이름</option>
+        <option value="index">도감번호</option>
+      </select>
+      <textarea name="" id="" cols="10" rows="1">입력</textarea>
+      <button>asdf</button>
+    </div>
     <div id="body-wrap">
       <div id="main">
-        
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>10</li>
+          <li>11</li>
+          <li>12</li>
+          <li>13</li>
+          <li>14</li>
+          <li>15</li>
+          <li>16</li>
+          <li>17</li>
+          <li>18</li>
+          <li>19</li>
+          <li>20</li>
+        </ul>
       </div>
       <div id="side">
-        
+        <div>
+          <img src="./acat.jpg" alt="">
+        </div>
+        <div>
+          <p>이름 :&nbsp;</p>
+          <p>고양이</p>
+        </div>
+        <div>
+          <p>도감번호 :&nbsp;</p>
+          <p>23</p>
+        </div>
       </div>
 
     </div>
@@ -86,10 +135,19 @@
     
       console.log(headerDownDiv.children[0].innerHTML+"님")
       console.dir(headerDownDiv.children[0])
+      
+      // if(a!==null){
+        
+      //   for(){}li.style.display = "block"
+      // }else{
+      //   if(a===sch.textcontent){
+      //     대충 검색 찾는거.
+      //   }else{
+      //     li.style.display = "block"
+      //   }
+      // }
 
     // body-wrap
-    bodyWrap.style.display = "flex"    
-    bodyWrap.style.justifyContent = "center"    
     
     // main
     
