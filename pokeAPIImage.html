@@ -46,9 +46,9 @@
 
 
     //기능모음 끝------------------------------------------------------------------------------
-
-
     
+    
+
     //html mark up 부분 시작
     makeTag(root,'button',1);
     makeTag(root,'ul',1);
@@ -139,12 +139,17 @@
 
         pokeNameData.push([pokeData.id,pokeData.names[2].name])
         pokeNameData.sort((a, b) => a[0]-b[0])
-        
       })
     } //function안의 for문 끝부분
     
-    
+    console.log(typeof(pokeNameData))
     console.log(pokeNameData)
+
+    Object.values(pokeNameData)
+    makeTag(ul.children[0],"div",1)
+    ul.children[0].children[0].addEventListener('click',function(){
+      tagInnerText(ul.children[0].children[1],pokeNameData[0])
+    })
       </script>
 </body>
 </html>
