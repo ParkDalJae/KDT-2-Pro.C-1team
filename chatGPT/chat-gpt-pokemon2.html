@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pokemon API Example</title>
+  </head>
+  <body>
+    <h1>Pokemon API Example</h1>
+    <div id="pokemon-container"></div>
+
+    <script>
+      const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
+      const pokemonId = 25; // Pikachu의 도감번호
+      const pokemonUrl = apiUrl + pokemonId;
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', pokemonUrl);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+
+          const pokemonImgUrl = data.sprites.front_default;
+          const pokemonName = data.name;
+          const pokemonId = data.id;
+
+          const pokemonContainer = document.getElementById("pokemon-container");
+
+          const pokemonImg = document.createElement("img");
+          pokemonImg.src = pokemonImgUrl;
+
+          const pokemonNameElement = document.createElement("h2");
+          pokemonNameElement.innerText = pokemonName;
+
+          const pokemonIdElement = document.createElement("p");
+          pokemonIdElement.innerText = `도감번호: ${pokemonId}`;
+
+          pokemonContainer.appendChild(pokemonImg);
+          pokemonContainer.appendChild(pokemonNameElement);
+          pokemonContainer.appendChild(pokemonIdElement);
+        } else {
+          console.error(xhr.statusText);
+        }
+      };
+      xhr.onerror = function() {
+        console.error(xhr.statusText);
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>
