@@ -17,6 +17,7 @@
   <script>
     const root = document.getElementById('root')
     
+    // ------------root url 시작
     // const xhr = new XMLHttpRequest();
     // // const rootUrl = 'https://pokeapi.co/api/v2/' // rootUrl
     // const _URL = 'https://pokeapi.co/api/v2/' // rootUrl
@@ -24,12 +25,13 @@
     // xhr.open('GET',_URL)
     // xhr.send();
     // xhr.addEventListener("load",function(){     //rootUrl부분
-    //   console.log(xhr.response)
+    //   // console.log(xhr.response)
     //   console.log("--------------------------------------------")
     //   const _PokeData = JSON.parse(xhr.response)
       
+    //   console.dir(_PokeData)
     //   let kids = Object.keys(_PokeData)
-    //   console.dir(kids.length)
+    //   console.dir(kids)
     //   let values = Object.values(_PokeData)
     //   for(let i=0;i<kids.length;i++){
         
@@ -45,8 +47,19 @@
     // const _URLMonDexObject = {   //객체로 저장이 가능한가?
     //   lemita : tatata,
     // }
-    const _URLMonDex = []
-    const _URLMonName = []
+    const totVal = []
+    const _URLMonDex = [1,2]
+    const _URLMonName = [1,2]
+
+    // function insertPokemonValue(totArray,fistArray,secondArray){
+    //   for(let i=0;i=fistArray.length;i++){
+    //     totArray.push([fistArray[i],secondArray[i]])
+    //   }
+    // }
+    // insertPokemonValue(totVal,_URLMonDex,_URLMonName)
+    // console.log(totVal);
+
+    
     const _URLMonSethu = []
     
     xhr1.open('GET',_URLDex)
@@ -63,8 +76,8 @@
       console.dir("************************************************2") 
       console.dir(_PokeData.pokemon_entries) //pokedex부분 콘솔dir
       console.dir(_PokeData.pokemon_entries.length) //pokedex Length값
-      console.dir(_PokeData.pokemon_entries[0].entry_number) //pokedex 부분 index
-      console.dir(_PokeData.pokemon_entries[0].pokemon_species.name) //pokedex부분 name
+      console.dir(_PokeData.pokemon_entries[1].entry_number) //pokedex 부분 index
+      console.dir(_PokeData.pokemon_entries[1].pokemon_species.name) //pokedex부분 name
       console.dir("************************************************3") 
     })
     

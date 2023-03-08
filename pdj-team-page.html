@@ -45,7 +45,7 @@
     const bodyWrap = document.getElementById('body-wrap')
     const main = document.getElementById('main')
     const asideDiv = document.getElementById('side')
-    const mansuList = ["박달재","허진","정성철","이경택","이세민"]
+    const mansuList = ["박달재","허진","정성철","이경택","이세민","포켓몬"]
     
     // header
     header.style.display = "flex"
@@ -66,6 +66,9 @@
     headerUpDiv.style.fontSize = "30px"
     headerUpDiv.style.fontWeight = "bold"
     headerUpDiv.innerHTML = "만수무강"
+    headerUpDiv.addEventListener('click',function(){
+      window.location = 'index.html'
+    })
     
     let headerDownDiv = document.createElement('div')
     header.appendChild(headerDownDiv)
@@ -88,11 +91,25 @@
       // downDivCre.style.border = "1px black solid"
       headerDownDiv.appendChild(downDivCre)
       headerDownDiv.children[i].innerHTML = mansuList[i]
-      headerDownDiv.children[i].addEventListener("click",function(){
-        // console.log("Hi!")
-        window.location = 'https://naver.com';
-      })
     }
+    headerDownDiv.children[0].addEventListener("click",function(){//박달재
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[1].addEventListener("click",function(){//허진
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[2].addEventListener("click",function(){//정성철
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[3].addEventListener("click",function(){//이경택
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[4].addEventListener("click",function(){//이세민
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[5].addEventListener("click",function(){//포켓몬
+      window.location = './pdj-team-page.html';//경로 입력
+    })
       console.log(headerDownDiv.children[0].innerHTML+"님")
       console.dir(headerDownDiv.children[0])
     // body-wrap

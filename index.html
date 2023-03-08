@@ -56,6 +56,9 @@
     headerUpDiv.style.fontSize = "30px"
     headerUpDiv.style.fontWeight = "bold"
     headerUpDiv.innerHTML = "만수무강"
+    headerUpDiv.addEventListener('click',function(){
+      window.location = 'index.html'
+    })
     
     let headerDownDiv = document.createElement('div')
     header.appendChild(headerDownDiv)
@@ -65,9 +68,7 @@
     headerDownDiv.style.color = "white"
     headerDownDiv.style.width = "100%"
     headerDownDiv.style.height = "50px"
-    // headerDownDiv.style.border = "1px black solid"
     
-    // headerDownDiv.innerHTML = "상단 아랫줄"
     for(let i=0;i<mansuList.length;i++){
       let downDivCre = document.createElement('div')
       downDivCre.style.display = "flex"
@@ -75,13 +76,26 @@
       downDivCre.style.justifyContent = "center"
       downDivCre.style.width = "150px"
       downDivCre.style.height = "100%"
-      // downDivCre.style.border = "1px black solid"
       headerDownDiv.appendChild(downDivCre)
       headerDownDiv.children[i].innerHTML = mansuList[i]
     }
-    headerDownDiv.children[0].addEventListener("click",function(){
-      // console.log("Hi!")
-      window.location = './pdj-team-page.html';
+    headerDownDiv.children[0].addEventListener("click",function(){//박달재
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[1].addEventListener("click",function(){//허진
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[2].addEventListener("click",function(){//정성철
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[3].addEventListener("click",function(){//이경택
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[4].addEventListener("click",function(){//이세민
+      window.location = './pdj-team-page.html';//경로 입력
+    })
+    headerDownDiv.children[5].addEventListener("click",function(){//포켓몬
+      window.location = './pdj-team-page.html';//경로 입력
     })
     
       console.log(headerDownDiv.children[0].innerHTML+"님")
