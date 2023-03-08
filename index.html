@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="header"><!-- rgb 125 122 144 -->
+
+    </div>
+    <div id="body-wrap">
+      <div id="main">
+        
+      </div>
+      <div id="side">
+        
+      </div>
+
+    </div>
+  </div>
+  <script>
+    const root = document.getElementById('root')
+    const header = document.getElementById('header')
+    const bodyWrap = document.getElementById('body-wrap')
+    const main = document.getElementById('main')
+    const asideDiv = document.getElementById('side')
+    const mansuList = ["박달재","허진","정성철","이경택","이세민"]
+    
+    // header
+    header.style.display = "flex"
+    header.style.flexDirection = "column"
+    header.style.alignItems = "center"
+    header.style.backgroundColor = "rgb(125,122,144)"
+    header.style.height = "100px"
+    
+    let headerUpDiv = document.createElement('div')
+    header.appendChild(headerUpDiv)
+    headerUpDiv.style.display = "flex"
+    headerUpDiv.style.alignItems = "center"
+    headerUpDiv.style.justifyContent = "center"
+    headerUpDiv.style.color = "white"
+    headerUpDiv.style.width = "100%"
+    headerUpDiv.style.height = "50px"
+    // headerUpDiv.style.border = "1px black solid"
+    headerUpDiv.style.fontSize = "30px"
+    headerUpDiv.style.fontWeight = "bold"
+    headerUpDiv.innerHTML = "만수무강"
+    
+    let headerDownDiv = document.createElement('div')
+    header.appendChild(headerDownDiv)
+    headerDownDiv.style.display = "flex"
+    headerDownDiv.style.alignItems = "center"
+    headerDownDiv.style.justifyContent = "center"
+    headerDownDiv.style.color = "white"
+    headerDownDiv.style.width = "100%"
+    headerDownDiv.style.height = "50px"
+    // headerDownDiv.style.border = "1px black solid"
+    
+    // headerDownDiv.innerHTML = "상단 아랫줄"
+    for(let i=0;i<mansuList.length;i++){
+      let downDivCre = document.createElement('div')
+      downDivCre.style.display = "flex"
+      downDivCre.style.alignItems = "center"
+      downDivCre.style.justifyContent = "center"
+      downDivCre.style.width = "150px"
+      downDivCre.style.height = "100%"
+      // downDivCre.style.border = "1px black solid"
+      headerDownDiv.appendChild(downDivCre)
+      headerDownDiv.children[i].innerHTML = mansuList[i]
+      headerDownDiv.children[i].addEventListener("click",function(){
+        // console.log("Hi!")
+        window.location = 'https://naver.com';
+      })
+    }
+      console.log(headerDownDiv.children[0].innerHTML+"님")
+      console.dir(headerDownDiv.children[0])
+
+    // body-wrap
+    bodyWrap.style.display = "flex"    
+    bodyWrap.style.justifyContent = "center"    
+    
+    // main
+    
+    // aside
+
+
+  </script>
+</body>
+</html>
