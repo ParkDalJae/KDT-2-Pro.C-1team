@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="root">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1008.png" alt="">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="" id="imgSqr">
   </div>
   <!-- <h1>버전</h1>
   <h1>도감번호</h1>
@@ -16,6 +16,7 @@
   <h1>도감번호</h1> -->
   <script>
     const root = document.getElementById('root')
+    const imgSqr = document.getElementById('imgSqr')
     
     // ------------root url 시작
     // const xhr = new XMLHttpRequest();
@@ -43,25 +44,24 @@
     // })
     
     const xhr1 = new XMLHttpRequest();
-    const _URLDex = 'https://pokeapi.co/api/v2/pokedex/6' //전체넘버 추출용
+    const _URLDex = 'https://pokeapi.co/api/v2/pokedex/1' //전체넘버 추출용
     // const _URLMonDexObject = {   //객체로 저장이 가능한가?
     //   lemita : tatata,
     // }
-    const totVal = []
-    const _URLMonDex = [1,2]
-    const _URLMonName = [1,2]
+    // const totVal = []
+    // const _URLMonDex = ["일번","이번"]
+    // const _URLMonName = ["피카츄","라이츄"]
 
     // function insertPokemonValue(totArray,fistArray,secondArray){
-    //   for(let i=0;i=fistArray.length;i++){
-    //     totArray.push([fistArray[i],secondArray[i]])
+    //   let exarray = totArray
+    //   for(let i=0;i<fistArray.length;i++){
+    //     exarray.push([fistArray[i],secondArray[i]])
     //   }
+    //   return exarray
     // }
     // insertPokemonValue(totVal,_URLMonDex,_URLMonName)
     // console.log(totVal);
 
-    
-    const _URLMonSethu = []
-    
     xhr1.open('GET',_URLDex)
     xhr1.send();
     xhr1.addEventListener("load",function(){  
@@ -84,43 +84,81 @@
     const xhr2 = new XMLHttpRequest();
     
     // for(let i=0;i<)
-    const _URLMon = `https://pokeapi.co/api/v2/pokemon/666`//포켓몬개별 이름
+    // const _URLMon = `https://pokeapi.co/api/v2/pokemon/666`//포켓몬개별 이름
+    const _URLMon = `https://pokeapi.co/api/v2/pokemon-species/1`
     
     xhr2.open('GET',_URLMon)
     xhr2.send();
     xhr2.addEventListener("load",function(){     
-      // console.log(xhr2.response)
       console.log("--------------------------------------------4")
       const _PokeData = JSON.parse(xhr2.response)
-      
       const h1 = document.createElement('h1')
       h1.textContent = _PokeData.name
       root.appendChild(h1)
       console.dir(_PokeData) 
+      console.log(_PokeData.id+"구분")
     })
     
-    const xhr3 = new XMLHttpRequest();
-    const _URLManual = `https://pokeapi.co/api/v2/pokemon-species/6`//포켓몬 넘버(한글이름 들어있는 부분)
+    let pokeKoName = []
+
+    // for(let index = 1;index<1008;index++){  // ------------------------원본
+      //   const xhr3 = new XMLHttpRequest();
+      //   const _URLManual = `https://pokeapi.co/api/v2/pokemon-species/${index}`//포켓몬 넘버(한글이름 들어있는 부분)
+      //   xhr3.open('GET',_URLManual)
+      //   xhr3.send();
+      //   xhr3.addEventListener("load",function(){     
+        //     const _PokeData = JSON.parse(xhr3.response)
+    //     const h1 = document.createElement('h1')
     
-    xhr3.open('GET',_URLManual)
-    xhr3.send();
-    xhr3.addEventListener("load",function(){     
-      // console.log(xhr2.response)
-      console.log("--------------------------------------------5")
-      const _PokeData = JSON.parse(xhr3.response)
-      
-      const h1 = document.createElement('h1')
-      console.dir(_PokeData) 
-      console.dir("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/6") 
-      console.dir(_PokeData.names[2].language.name) 
-      for(let i=0;i<_PokeData.names.length;i++){ // 포켓몬 한글 이름
-        if(_PokeData.names[i].language.name==="ko"){
-          
-          h1.textContent = _PokeData.names[i].name
-          root.appendChild(h1)
+    //   for(let i=0;i<_PokeData.names.length;i++){ // 포켓몬 한글 이름
+    //     if(_PokeData.names[i].language.name==="ko"){
+    //       pokeKoName.push([_PokeData.id,_PokeData.names[i].name])
+    
+    //       h1.textContent = _PokeData.names[i].name+_PokeData.id
+    //       root.appendChild(h1)
+    //     }
+    //   }
+    //   })
+    // }// -------------------------------------------------------------원본
+    
+    for(let index = 1;index<=1008;index++){  // ------------------------원본
+      const xhr3 = new XMLHttpRequest();
+      const _URLManual = `https://pokeapi.co/api/v2/pokemon-species/${index}`//포켓몬 넘버(한글이름 들어있는 부분)
+      xhr3.open('GET',_URLManual)
+      xhr3.send();
+      xhr3.addEventListener("load",function(){     
+        const _PokeData = JSON.parse(xhr3.response)
+        // const h1 = document.createElement('h1')
+        
+        for(let i=0;i<_PokeData.names.length;i++){ // 포켓몬 한글 이름
+          if(_PokeData.names[i].language.name==="ko"){
+            pokeKoName.push([_PokeData.id, _PokeData.names[i].name])
+            pokeKoName.sort((a, b) => a[0] - b[0])
+            
+            // h1.textContent = _PokeData.names[i].name+_PokeData.id
+            // root.appendChild(h1)
+          }
         }
+      })
+    }
+    console.log(pokeKoName.length+"입니다")
+    
+    console.log(pokeKoName[0])
+    console.log(pokeKoName)
+    
+    let eeeeeee = []
+    console.log(eeeeeee.length+"배열 선언후")
+    console.log(eeeeeee.length+"맨 마지막")
+    
+    
+    imgSqr.addEventListener('click',function(){
+      for(let a = 0;a<20;a++){
+        eeeeeee.push(a)
       }
+      console.log(eeeeeee.length+":addevent 후---------*/-*/-*")
+      console.log(pokeKoName[0])
     })
+
     </script>
 </body>
 </html>
