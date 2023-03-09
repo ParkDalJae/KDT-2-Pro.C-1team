@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+
+    // 구조 작성 함수
+    function makeElement(tagName, parent) {
+      const element = document.createElement(tagName);
+      parent.appendChild(element);
+    }
+    // 구조 작성 함수 호출
+    makeElement('header', root);
+    makeElement('nav', root);
+    makeElement('select', root.children[1]);
+    makeElement('textarea' ,root.children[1]);
+    makeElement('button',root.children[1]);
+    makeElement('main', root);
+    makeElement('ul', root.children[2]);
+    for (let list = 0; list < 10; list++) {
+      makeElement('li', root.children[2].children[0]);
+    }
+    makeElement('div', root.children[2]);
+    makeElement('img', root.children[2].children[1]);
+    makeElement('div', root.children[2].children[1]);
+    makeElement('div', root.children[2].children[1]);
+
+    // root style
+    root.style.width = "100vw";
+    root.style.height = "100vh";
+
+    // header style
+    root.children[0].style.width = "100%";
+    root.children[0].style.height = "10%";
+
+    // nav style
+    root.children[1].style.width = "100%";
+    root.children[1].style.height = "10%";
+    root.children[1].style.display = "flex";
+    root.children[1].style.alignItems = "center";
+
+    // nav>select
+    root.children[1].children[0].style.width = "20%"
+    root.children[1].children[0].style.height = "30%"
+    root.children[1].children[0].style.margin = "5%"
+
+    // nav>textarea
+    root.children[1].children[1].style.width = "20%"
+    root.children[1].children[1].style.height = "30%"
+
+    // nav>button
+    root.children[1].children[2].style.width = "5%"
+    root.children[1].children[2].style.height = "30%"
+    // main style
+    root.children[2].style.width = "100%";
+    root.children[2].style.height = "80%";
+    root.children[2].style.display = "flex";
+    root.children[2].style.justifyContent = "center";
+    root.children[2].style.alignItems = "center";
+
+    // ul style
+    root.children[2].children[0].style.width = "40%";
+    root.children[2].children[0].style.height = "100%";
+    root.children[2].children[0].style.display = "flex";
+    root.children[2].children[0].style.flexDirection = "column";
+    root.children[2].children[0].style.justifyContent = "space-around";
+    root.children[2].children[0].style.alignItems = "flex-start";
+    
+    //ul>li style
+    for (let liststyle = 0; liststyle < 10; liststyle++) {
+      root.children[2].children[0].children[liststyle].style.width = "80%";
+      root.children[2].children[0].children[liststyle].style.height = "8%";
+      root.children[2].children[0].children[liststyle].style.listStyleType = "none";
+    }
+
+    // main>div style
+    root.children[2].children[1].style.width = "60%";
+    root.children[2].children[1].style.height = "100%";
+    root.children[2].children[1].style.display = "flex";
+    root.children[2].children[1].style.flexDirection = "column";
+    root.children[2].children[1].style.justifyContent = "space-around";
+    root.children[2].children[1].style.alignItems = "center";
+    // main>div>img style
+    root.children[2].children[1].children[0].style.width = "80%";
+    root.children[2].children[1].children[0].style.height = "60%";
+    // main>div>div[0] style
+    root.children[2].children[1].children[1].style.width = "80%";
+    root.children[2].children[1].children[1].style.height = "15%";
+    // main>div>div[1] style
+    root.children[2].children[1].children[2].style.width = "80%";
+    root.children[2].children[1].children[2].style.height = "15%";
+    
+  </script>
+</body>
+
+</html>
