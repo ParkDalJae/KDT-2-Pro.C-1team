@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const openBracket = '<'
+    const closeBracket = '>'
+    const slash = '/'
+
+    const tagElement = openBracket + 'div'+ closeBracket + 'korea digital traning' + openBracket + slash + 'div' + closeBracket;
+
+    function firstTagmaker(tagName,isOnOff){
+      let tagString = "";
+      if(isOnOff){
+        tagString = openBracket + tagName + closeBracket;
+      }else{
+        tagString = openBracket + slash + tagName + closeBracket;
+      }
+      return tagString;
+    }
+
+    let completTag = firstTagmaker('div',true) + 'HTML is just Sring' + firstTagmaker('div',false);
+
+    console.log(completTag)
+  
+  </script>
+
+</body>
+</html>

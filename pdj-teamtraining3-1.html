@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">tesssssssssssssssst</div>
+  <script>
+    // function elementMaker(tagName,props, ...children) {         //원본
+      
+    //   const element = document.createElement(tagName);
+      
+    //   Object.keys(props).forEach(function(key) {
+        
+    //     element[key] = props[key];
+        
+    //   });
+      
+    //   if(children.length>0){
+        
+    //     children.forEach(function(child) {
+          
+    //       if(typeof (child) === "stirng"){
+          
+    //         child = document.createTextNode(child);
+          
+    //       }
+          
+    //       element.appendChild(child);
+          
+    //     });
+        
+    //   }
+      
+    //   return element;
+    // }
+    let root = document.getElementById('root')
+
+    root.style.width = "300px"
+    root.style.height = "300px"
+    root.style.border = "1px black solid"
+    root.style.backgroundColor = "pink"
+
+      let aaaaa = {
+        name : "박달재",
+        age : "10 오버",
+        key : "3M 언더"
+      }
+      let bbbbb = {}
+      for(let key in aaaaa){
+        console.log(aaaaa[key])
+        bbbbb[key] = aaaaa[key]
+      }
+      console.log(bbbbb.name)
+      console.log(bbbbb.age)
+      console.log(bbbbb.key)
+      
+
+
+    function elementMaker(tagName,props, ...children) {
+      
+      const element = document.createElement(tagName);
+      
+      for(let key in props){
+        console.log(props[key])
+        element[key] = props[key]
+      }
+      
+      // Object.keys(props).forEach(function(key) { // 요소의 키값들 만큼 반복문 실행
+        
+      //   element[key] = props[key];
+        
+      // });
+      
+      if(children.length>0){
+        
+        children.forEach(function(child) {
+          
+          if(typeof (child) === "stirng"){
+          
+            child = document.createTextNode(child);
+          
+          }
+          
+          element.appendChild(child);
+          
+        });
+        
+      }
+      
+      return element;
+    }
+    // root.appendChild(elementMaker("div",root,1,1,1,1,1,2,2,2,));
+    // root.appendChild(elementMaker("div",root,"1,1,1,1,1,2,2,2,","가다나라","다나가라","나가라다"));
+    const rootChildDiv = root.appendChild(elementMaker('div',root))
+
+    console.dir(root)
+    console.log("-------------------------------------------")
+    
+  
+  </script>
+</body>
+</html>
