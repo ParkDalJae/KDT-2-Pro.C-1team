@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+
+    // 구조 작성 함수
+    function makeElement(tagName, parent) {
+      const element = document.createElement(tagName);
+      parent.appendChild(element);
+    }
+    // 구조 작성 함수 호출
+    //header
+    makeElement('header', root);
+    //nav
+    makeElement('nav', root);
+    makeElement('select', root.children[1]);
+    makeElement('textarea' ,root.children[1]);
+    makeElement('button',root.children[1]);
+    //main
+    makeElement('main', root);
+    //main > children[0]
+    makeElement('ul', root.children[2]);
+    for (let list = 0; list < 10; list++) {
+      makeElement('li', root.children[2].children[0]);
+    }
+    //main > children[1]
+    makeElement('div', root.children[2]);
+    makeElement('img', root.children[2].children[1]);
+    makeElement('div', root.children[2].children[1]);
+    makeElement('div', root.children[2].children[1]);
+
+    //스타일 키값
+    function styleMaker(element,arrayName,arrayValue) {
+      for(let i=0; i<arrayName.length; i++){
+    element.style[arrayName[i]] = arrayValue[i];
+      }
+    }
+    // root style
+    const rootStyleName = ["width", "height"];
+    const rootStyleValue = ["100vw", "100vh"];
+    styleMaker(root, rootStyleName, rootStyleValue);
+
+    // header style
+    const headerStyleName = ["width", "height"];
+    const headerStyleValue = ["100%", "10%"];
+    styleMaker(root.children[0], headerStyleName, headerStyleValue);
+
+    // nav style
+    const navStyleName = ["width", "height", "display", "alignItems"];
+    const navStyleValue = ["100%", "10%", "flex", "center"];
+    styleMaker(root.children[1], navStyleName, navStyleValue)
+
+    // nav>select
+    const selectStyleName = ["width","height","margin"];
+    const selectStyleValue = ["20%","30%","5%"];
+    styleMaker(root.children[1].children[0], selectStyleName, selectStyleValue)
+
+    // nav>textarea
+    const textareaStyleName = ["width","height"];
+    const textareaStyleValue = ["20%","30%"];
+    styleMaker(root.children[1].children[1], textareaStyleName, textareaStyleValue)
+
+    // nav>button
+    const buttonStyleName = ["width","height"];
+    const buttonStyleValue = ["5%","30%"];
+    styleMaker(root.children[1].children[2], buttonStyleName, buttonStyleValue)
+    // main style
+    const mainStyleName = ["width","height","display","justifyContent","alignItems"];
+    const mainStyleValue = ["100%","80%","flex","center","center"];
+    styleMaker(root.children[2], mainStyleName, mainStyleValue)
+
+    // ul style
+    const ulStyleName = ["width","height","display","justifyContent","alignItems","flexDirection"];
+    const ulStyleValue = ["40%","100%","flex","space-around","flex-start","column"];
+    styleMaker(root.children[2].children[0], ulStyleName, ulStyleValue)
+    
+    //ul>li style    
+    const liStyleName = ["width","height","listStyleType"];
+    const liStyleValue = ["80%","8%","none"];
+    for (let liststyle = 0; liststyle < 10; liststyle++) {
+      styleMaker(root.children[2].children[0].children[liststyle], liStyleName, liStyleValue)
+    }
+
+    // main>div style
+    const divAllName = ["width","height","display","justifyContent","alignItems","flexDirection"];
+    const divAllValue = ["60%","100%","flex","space-around","center","column"];
+    styleMaker(root.children[2].children[1], divAllName, divAllValue)
+    // main>div>img style
+    const imageName = ["width","height"];
+    const imageValue = ["80%","60%"];
+    styleMaker(root.children[2].children[1].children[0], imageName, imageValue)
+    // main>div>div[0] style
+    const div0Name = ["width","height"];
+    const div0Value = ["80%","15%"];
+    styleMaker(root.children[2].children[1].children[1],div0Name,div0Value)
+    // main>div>div[1] style
+    const div1Name = ["width","height"];
+    const div1Value = ["80%","15%"];
+    styleMaker(root.children[2].children[1].children[2],div1Name,div1Value)
+    
+  </script>
+</body>
+
+</html>
