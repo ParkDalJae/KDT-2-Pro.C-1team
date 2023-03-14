@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+  </div>
+  <script>
+    //root 선언
+    const root = document.getElementById('root')
+
+
+    //기능 모음 ----------------------------------------------------------------------------
+    function makeTag (parentName, tagName, addNum) {
+      for(let i=0;i<addNum;i++){
+        const createTag = document.createElement(tagName)
+        parentName.appendChild(createTag)
+      }
+    }
+
+    //태그에 선택자 입력
+    function setAttri (parentName, tagStyle, tagInnerText) {
+      parentName.setAttribute(tagStyle,tagInnerText)
+    }
+    
+    //태그에 글자 입력(innertext, innerHTML)
+    function tagInnerText (childName, addInnerText){
+      childName.innerText = addInnerText
+    }
+
+    function tagInnerHTML (childName, addInnerHTML){
+      childName.innerHTML = addInnerHTML
+    }
+    
+    //이미지 소스url, alt 넣기
+    function imgScrAlt(parentName, addSrc, addAlt){
+      const imgElement = document.createElement('img')
+      const imgCreate = parentName.appendChild(imgElement)
+      imgCreate.src = addSrc
+      imgCreate.alt = addAlt
+    }
+
+
+    //기능모음 끝------------------------------------------------------------------------------
+
+
+    
+    // makeTag(root,'img',1)
+    // imgScrAlt(root.children[0],'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png','이상해')
+    
+
+    //html mark up 부분 시작
+    makeTag(root,'button',1);
+    makeTag(root,'ul',1);
+    setAttri(root.children[0],'id','shiny-button')
+    //html mark up 부분 끝
+
+    //선택자 지정 시작
+    const selectAll = [
+      ul = document.querySelector('ul'),
+      shinyButton = document.getElementById('shiny-button'),
+      shinyCount=true,
+      //포켓몬 수 지정은 여기서 할 것
+      addPokeNum = 20,
+      //li내 이미지 위치(한꺼번에 바뀌게끔 임시로 만듦)
+      liImgLocate = 0,
+    ]
+    //선택자 지정 끝
+    
+    tagInnerText(shinyButton,"이로치") //버튼 텍스트 입력
+
+
+    //포켓몬 수 지정하면 알아서 li를 늘리기
+    makeTag(ul,'li',addPokeNum);
+
+
+
+    //처음 포켓몬 이미지 불러오는 for문 시작
+    for(let i=0;i<addPokeNum;i++){
+        const pokeimg = imgScrAlt(ul.children[i],`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i+1}.png`,'일단 적어')
+      }
+    //처음 포켓몬 이미지 불러오는 for문 끝
+
+
+    //ul 스타일 시작
+    ul.style.listStyleType="none";
+    ul.style.display = "flex";
+    ul.style.flexWrap = "wrap";
+    //ul 스타일 끝
+
+        
+    //이로치 개별 스위치 시작
+    for(let i=0;i<addPokeNum;i++){
+      ul.children[i].children[liImgLocate].addEventListener('click',function (){
+        if(shinyCount===true){
+          ul.children[i].children[liImgLocate].src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i+1}.png`
+          shinyCount = false;
+        } else {
+          ul.children[i].children[liImgLocate].src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i+1}.png`
+          shinyCount=true;
+        }
+      }) // for문 안의 addeventlistener 끝
+      }  // for문 끝
+      //이로치 개별 스위치 끝
+        
+
+    //이로치 전체 스위치 시작
+    //이로치 전체 스위치 반복문 시작
+    shinyButton.addEventListener('click',function(){
+      if(shinyCount===true){
+        for(let i=0;i<addPokeNum;i++){
+          ul.children[i].children[liImgLocate].src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i+1}.png`
+        } 
+        shinyCount=false;
+      } else {
+        for(let i=0;i<addPokeNum;i++){
+        ul.children[i].children[liImgLocate].src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i+1}.png`
+      } 
+        shinyCount=true;
+      } //if문 끝
+    }) //이로치 전체 스위치 반복문 끝
+    //이로치 전체 스위치 끝
+
+
+
+
+
+
+    //한국어 포켓몬 이름
+    const pokeNameData = [];
+    // const pokeNumbers = [];
+    // const pokeAllset = {};
+    let numbers = 133;
+    for(let i=1;i<numbers;i++){
+      const xhr = new XMLHttpRequest;
+      const URL = `https://pokeapi.co/api/v2/pokemon-species/${i}`;
+      xhr.open('get',URL);
+      xhr.send();
+      xhr.addEventListener('load',function (){
+        const pokeData = JSON.parse(xhr.response)
+        // console.dir(pokeData)
+        // console.log(pokeData.names[2].name)
+        // pokeName[i]=pokeNameData.push(pokeData.names[2].name)
+        // console.log(pokeName)
+        // console.log()
+        // pokeNameData.push(pokeData.names[2].name)
+        // pokeNumbers.push(pokeData.id)
+        pokeNameData.push([pokeData.id,pokeData.names[2].name])
+        // setTimeout(pokeNameData.push([pokeData.id,pokeData.names[2].name]),2000)
+      })
+    } //function안의 for문 끝부분
+    // Object.keys(pokeNameData)
+    
+    
+    
+    /*
+    pokeNameData.sort(setTimeout(
+      function(a, b){
+        if(a > b) return 1;
+        if(a === b) return 0;
+        if(a < b) return -1;
+        
+      }),500)
+      
+      console.log(pokeNameData)
+      */
+
+  /*
+  function selectionSort(arr) {
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  }
+  
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[min] > arr[j]) {
+        min = j;
+      }
+   }
+  
+  if (arr[min] !== arr[i]) {
+     swap(arr, i, min);
+  }
+  
+  return arr;
+}
+*/
+
+/*
+function selectionSort(pokeNameData) {
+  const swap = (pokeNameData,id , names) => {
+    [pokeNameData[id], pokeNameData[names]] = [pokeNameData[id], pokeNameData[names]];
+  }
+  
+  for (let i = 0; i < arr.length; i++) {
+      if (pokeNameData[min] > pokeNameData[j]) {
+        min = j;
+      }
+   }
+  
+  if (pokeNameData[min] !== pokeNameData[i]) {
+     swap(pokeNameData, i, min);
+  }
+  
+  return pokeNameData;
+}
+*/
+
+
+
+/*
+function bubbleSort(arr) {
+  let noSwaps;
+  for (let i = arr.length; i > 0; i--) {
+    noSwaps = true;
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j+1]) {
+        let temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+        noSwaps = false;
+        
+      }
+      }
+      if (noSwaps) break;
+    }
+    return arr;
+  }
+  */
+ 
+  /*
+ function bubbleSort(pokeNameData) {
+   let noSwaps;
+   for (let i = pokeNameData.length; i > 0; i--) {
+     noSwaps = true;
+     for (let j = 0; j < i - 1; j++) {
+       if (pokeNameData[j] > pokeNameData[j+1]) {
+         let temp = pokeNameData[j];
+         pokeNameData[j] = pokeNameData[j+1];
+         pokeNameData[j+1] = temp;
+         noSwaps = false;
+         
+        }
+      }
+      if (noSwaps) break;
+    }
+    return pokeNameData;
+  }
+  */
+
+
+/*
+
+let min;   	//최소값
+let index; 	//최소값의 인덱스#
+let temp;  	//두 숫자(현재 값이랑 최소값)를 바꿔치기하는 임시장소
+
+  // 1. 포문으로 배열을 검사한다.
+for (let i = 0; i < 10; i++){
+  min = 9999; 	// array의 모든 원소보다 큰 숫자로 정의
+  
+ // 2. 2차원 포문으로 최소값 찾기
+  for (let j = i; j < 10; j++) {
+    if (min > pokeNameData[j]){ // 만약 현재 원소(min)가 현재 검사순서인 값(array[j])보다 작다면
+      min = pokeNameData[j]; 	 // 현재 원소(min)의 값을 array[j]로 바꿔치기! 한다	
+      index = j;	 // index 값은 j로 넣어주고요
+    }
+  }
+
+  // 3. 배열 안 두 원소 스와칭
+  temp = pokeNameData[i]; 	   // temp에 현재 검사값 넣기
+  pokeNameData[i] = pokeNameData[index]; // 인덱스i를 위에서 정의한 index값으로 바꿔치기
+  pokeNameData[index] = temp;	   // index에 위치한 array 원소값을 temp에 넣기 
+}
+
+function selectionSort(pokeNameData){
+  for(let i = 0; i < pokeNameData.length; i++){
+    let lowest = i;    // 제일 작은 값일 때의 인덱스 저장할 공간 (inner for문 한바퀴 돌고는 i로 리셋)
+    for(let j = i + 1; j < pokeNameData.length; j++){ // j 는 i 다음 인덱스이다 (i랑 j랑 겹치지 않도록)
+      for(let t = j +1; t < pokeNameData.length; t++){
+          for(let k = t + 1; k < pokeNameData.length; k++){
+              for(let d = k +1; d < pokeNameData.length; d++){
+                for(let y = d+1; y < pokeNameData.length; y++){
+                  if(pokeNameData[y] < pokeNameData[lowest]){  	     // arr[j] 값이 < 가장 작은 값(lowest)보다 작으면
+                    lowest = y; 			     // 이구역의 작은 값의 인덱스는 j가 된다.
+                  }
+                  
+                  if(i !== lowest){ // i 와 lowest 값이 같으면 굳이 자리를 바꿀(swap) 필요가 없다
+                    // SWAP!
+                    const temp = pokeNameData[i];
+                    pokeNameData[y] = pokeNameData[lowest];
+                    pokeNameData[lowest] = temp;
+                  }
+                }
+              }
+          }
+      }
+    }
+  }
+}
+
+selectionSort(pokeNameData);
+
+*/
+
+
+let temp; //두 원소를 바꿔치기하는 임시장소
+
+// 1. 포문으로 배열을 검사한다.
+for (let i = 0; i < pokeNameData.length; i++) {
+  for(let t = t +1; t < pokeNameData.length; t++){
+
+    //let j = i; // j값을 i값으로 놓는다. (그래야 while문에서 j를 인덱스로 동시에 사용가능하니까)
+    let t = i;
+    
+    // 2. 현재원소가 > 다음원소보다 크고 && j가 0이상이면, while문 실행!
+    while (pokeNameData[t] > pokeNameData[t + 1] && t >= 0) {
+      // 3. 두 원소 서로 스와핑
+      temp = pokeNameData[t]; 		 // temp에 현재 원소(array[j])의 값을 넣어준다.
+      pokeNameData[t] = pokeNameData[t + 1]; 	 // 현재 원소(array[j])의 값을 다음 원소값으로 바꿔주고,
+      pokeNameData[t + 1] = temp; 	 // temp, 즉 현재 원소 자리에는 다음 원소값으로 대체한다.
+      // 4. j--로 이전 숫자들을 같은 조건으로 한번 더 검사해서 걔네들도 스와핑 해준다.
+      t--; 	
+    }
+  }
+}
+
+console.log(pokeNameData)
+
+  
+  // Object.values(pokeNameData)
+    // console.log(pokeNameData)
+    // console.log(pokeNumbers)  
+    // const pokemonDataSet = [pokeNumbers,pokeNameData]
+
+    // for(let i=1;i<numbers;i++){
+    //   pokeAllset[pokeNumbers[i]]=pokeNameData[i]
+
+    // }
+    // console.log(pokeAllset)
+    
+    
+
+      </script>
+</body>
+</html>
