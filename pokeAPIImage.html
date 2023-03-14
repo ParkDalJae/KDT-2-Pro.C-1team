@@ -46,11 +46,7 @@
 
 
     //기능모음 끝------------------------------------------------------------------------------
-
-
     
-    // makeTag(root,'img',1)
-    // imgScrAlt(root.children[0],'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png','이상해')
     
 
     //html mark up 부분 시작
@@ -65,7 +61,7 @@
       shinyButton = document.getElementById('shiny-button'),
       shinyCount=true,
       //포켓몬 수 지정은 여기서 할 것
-      addPokeNum = 20,
+      addPokeNum = 40,
       //li내 이미지 위치(한꺼번에 바뀌게끔 임시로 만듦)
       liImgLocate = 0,
     ]
@@ -130,27 +126,30 @@
 
 
 
-    // //한국어 포켓몬 이름
-    // const xhr = new XMLHttpRequest;
-    // const URL = [];
-    // xhr.open('get',URL);
-    // xhr.send();
-    // xhr
+    //한국어 포켓몬 이름
+    const pokeNameData = [];
+    let numbers = 500;
+    for(let i=1;i<numbers;i++){
+      const xhr = new XMLHttpRequest;
+      const URL = `https://pokeapi.co/api/v2/pokemon-species/${i}`;
+      xhr.open('get',URL);
+      xhr.send();
+      xhr.addEventListener('load',function (){
+        const pokeData = JSON.parse(xhr.response)
+
+        pokeNameData.push([pokeData.id,pokeData.names[2].name])
+        pokeNameData.sort((a, b) => a[0]-b[0])
+      })
+    } //function안의 for문 끝부분
     
-    // const pokeNameCollector = [];
-    // for(let i=0;i<addPokeNum;i++){
-    //   const URL = [];
-    //   URL.push(`https://pokeapi.co/api/v2/pokemon-species/${i+1}`)
-    //   // const URL = `https://pokeapi.co/api/v2/pokemon-species/1`
-    //   xhr.open('get',URL[i]);
-    //   xhr.send();
-    //   xhr.addEventListener('load',function(){
-    //   const pokeDate = JSON.parse(xhr.response);
-    //   // pokeNameCollector.push(pokeDate.names[2].name);
-    //   console.log(pokeDate)
-    // })//addeventlistener 끝
-    // }//바깥for문 끝 
-    // console.log(pokeNameCollector)
-  </script>
+    console.log(typeof(pokeNameData))
+    console.log(pokeNameData)
+
+    Object.values(pokeNameData)
+    makeTag(ul.children[0],"div",1)
+    ul.children[0].children[0].addEventListener('click',function(){
+      tagInnerText(ul.children[0].children[1],pokeNameData[0])
+    })
+      </script>
 </body>
 </html>
