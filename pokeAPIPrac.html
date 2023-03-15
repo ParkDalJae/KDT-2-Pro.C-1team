@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <input type="button" id="click-button" value="Download">
+  </div>
+  <script>
+    const pokeDataFile = [];
+    const pokeDataStringFile = [];
+    const xhr = new XMLHttpRequest
+    const URL = 'https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=100000'
+    xhr.open('get',URL)
+    xhr.send();
+    xhr.addEventListener('load',function(){
+      const pokeData = JSON.parse(xhr.response)
+      // console.log(pokeData)
+      pokeDataFile.push(pokeData)
+      pokeDataStringFile.push(JSON.stringify(pokeData))
+    })
+
+    const root = document.getElementById('root')
+    const cb = document.getElementById('click-button')
+    function downaaaa(filename, textInput){
+      const element = document.createElement('a');
+      element.setAttribute('herf','data:application/json;charset=utf-8, '+encodeURIComponent(textInput));
+      element.setAttribute('download',filename);
+      element.click();
+    }
+    cb.addEventListener('click',function (){
+      downaaaa("pokeSpeInfo.json",pokeDataStringFile)
+          }, false);
+
+
+
+
+  </script>
+</body>
+</html>
