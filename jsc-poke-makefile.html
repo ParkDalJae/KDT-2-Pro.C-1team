@@ -31,11 +31,10 @@
       document.body.removeChild(element)//a태그 삭제
     })
 
-    const pokeNameData = [];
-    let numbers = 1010;
-    for(let i=1;i<numbers;i++){
+      const pokeNameData = [];
       const xhr = new XMLHttpRequest;
-      //받고자 하는 데이터 주소 입력
+      //받고자 하는 데이터 주소 입력 
+      //주소 끝에 ?offset=0&limit=100000을 넣으면 전체 데이터를 넣을 수 있다.
       // const URL = `https://pokeapi.co/api/v2/pokemon-species/${i}`;
       // const URL = `https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=100000`;
       const URL = `https://pokeapi.co/api/v2/?offset=0&limit=100000`;
@@ -45,13 +44,14 @@
         const pokeData = JSON.parse(xhr.responseText)
         
         pokeNameData.push([pokeData])
+        //데이터 오름차순 정렬
         const htmlPrint=pokeNameData.sort((a, b) => a[0]-b[0])
 
         //받아올 데이터 변수 문자열 안을 변경해서 이름변경 할수 있다.
         contentArea.innerHTML = 'const pokemonDataAll = ' +JSON.stringify(htmlPrint)
-
+        
       })
-    }
+    
   </script>
 </body>
 </html>
