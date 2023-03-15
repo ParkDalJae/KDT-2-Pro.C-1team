@@ -12,10 +12,32 @@
   </div>
   <script>
     const root = document.getElementById('root')
+    root.appendChild(document.createElement('h1'))
+    const subArea = document.createElement('textarea')
+    root.appendChild(document.createElement('h1'))
+    const contentArea = document.createElement('textarea')
+    root.appendChild(subArea)
+    root.appendChild(contentArea)
+    console.dir(root)
+    for(let i=0;i<root.children.length;i++){
+      
+    }
 
     let xmlHR = new XMLHttpRequest();
 
-    const url = "https://pokeapi.co/api/v2/pokemon/ditto"
+    const rootUrl = "https://pokeapi.co/api/v2/"//root
+    const dexUrl = "https://pokeapi.co/api/v2/"//도감번호(전체)
+    const pokemonUrl = "https://pokeapi.co/api/v2/"//포켓몬 정보
+    xmlHR.open('get',rootUrl)
+    xmlHR.send()
+    xmlHR.addEventListener('load',function(){
+      const _PokeAPIrootUrl = JSON.parse(xmlHR.response)
+      console.dir(_PokeAPIrootUrl)
+      
+    })
+
+    
+    
 
   </script>
 </body>
