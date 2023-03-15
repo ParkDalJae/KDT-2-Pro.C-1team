@@ -21,8 +21,8 @@
   <script>
     const root = document.getElementById('root');
 
-    const selectarray = ["이름","속성","번호","지역"]
-    const listarray= new Array(100);
+    const selectarray = ["이름","번호"]
+    const listarray= ["이상해씨","파이리","꼬부기","잠만보"];
     
 
     // 구조 작성 함수
@@ -37,15 +37,26 @@
         parent.setAttribute(attriName,attriValue);
         parent.innerHTML = text;
     }
+
+    // text 작성 함수
+    function makeText(parent, ...text){
+      parent.innerHTML = text;
+    }
+
+    // style 작성 함수
+    function ObjectmakeStyle(object) {
+      for (let i = 0; i < object.firstArray.length; i++) {
+        object.element.style[object.firstArray[i]] = object.secondArray[i];
+      }
+    }
+
     // 구조 작성 함수 호출
     makeElement('header', root, 1);
     makeElement('nav', root, 1);
     makeElement('select', root.children[1], 1);
-    makeElement('option', root.children[1].children[0],4)
+    makeElement('option', root.children[1].children[0],selectarray.length)
     makeAttribute('value','name',selectarray[0],root.children[1].children[0].children[0])
-    makeAttribute('value','type',selectarray[1],root.children[1].children[0].children[1])
-    makeAttribute('value','number',selectarray[2],root.children[1].children[0].children[2])
-    makeAttribute('value','area',selectarray[3],root.children[1].children[0].children[3])
+    makeAttribute('value','number',selectarray[1],root.children[1].children[0].children[1])
     makeElement('input', root.children[1], 1);
     makeElement('button', root.children[1], 1);
     makeElement('main', root, 1);
@@ -61,11 +72,7 @@
     //     element.style[arrayKey[i]] = arrayValue[i];
     //   }
     // }
-    function ObjectmakeStyle(object) {
-      for (let i = 0; i < object.firstArray.length; i++) {
-        object.element.style[object.firstArray[i]] = object.secondArray[i];
-      }
-    }
+  
     // root style
     const rootStyle = {
       firstArray: ["width", "height"],
@@ -122,7 +129,6 @@
       element: root.children[2]
     }
     ObjectmakeStyle(mainStyle);
-    console.dir(root.style);
     // ul style
     const ulstyle = {
       firstArray: ["width", "height", "display", "flexDirection", "justifyContent", "alignItems","overflow"],
@@ -139,6 +145,7 @@
         element: root.children[2].children[0].children[liststyle]
       }
       ObjectmakeStyle(ulliStyle);
+      makeText(root.children[2].children[0].children[liststyle],listarray[liststyle])
     }
 
     // main>div style
@@ -165,8 +172,14 @@
         element: root.children[2].children[1].children[i]
       }
       ObjectmakeStyle(maindivdivoneStyle);
+      makeText(root.children[2].children[1].children[i],selectarray[i-1])
     }
    
+    for(let i = 0; i < listarray.length; i++){
+      root.children[2].children[0].children[i].addEventListener('click',function(){
+        
+      })
+    }
   </script>
 </body>
 
