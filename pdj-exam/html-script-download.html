@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- https://pokeapi.co/api/v2/ -->
+<body>
+  <div id="root">
+    <textarea name="" id="subArea" cols="30" rows="10">제목</textarea>
+    <textarea name="" id="contentArea" cols="30" rows="10">내용</textarea>
+    <a href="" download=""></a>
+  </div>
+  <script>
+    const subArea = document.getElementById('subArea')
+    const contentArea = document.getElementById('contentArea')
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      let element = document.createElement('a')
+
+      let text = '테스트파일'
+      element.setAttribute('href','data:text/plain;charset=utf-8')+encodeURIComponent(text);
+      // element.setAttribute('href',text);
+      element.setAttribute('download',subArea.textContent+".txt")
+      element.style.display = 'none'
+
+      document.body.appendChild(element)//dom 아래 body에 a태그 부착
+      element.click();//a태그 클릭
+      document.body.removeChild(element)//a태그 삭제
+    })
+
+
+  </script>
+</body>
+</html>

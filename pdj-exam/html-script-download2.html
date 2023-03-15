@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    a 태그, 클릭시 href 안의 로컬경로의 파일로 이동함. #태그일 경우 현재 문서를 이동함
+    a 태그 안의 download속성에 값 할당 시 값의 내용이 파일의 이름이 되고 a태그 클릭시 
+    문서 이동이 아닌 파일 저장으로 바뀜.
+  -->
+  <a id="download-link" href="#" download="file.txt">파일 다운로드</a>
+
+<script>
+  const downloadLink = document.getElementById("download-link");
+  const filename = "hello world";
+  downloadLink.href = "data:text/plain;charset=utf-8," + encodeURIComponent(filename);
+</script>
+</body>
+</html>

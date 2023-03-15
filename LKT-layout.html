@@ -17,7 +17,9 @@
 
 <body>
   <div id="root"></div>
-  <script>
+  <script src="./LKT-layout.js"></script>
+  <!-- <script>
+    
     const root = document.getElementById('root');
 
     // 구조 작성 함수
@@ -26,12 +28,12 @@
       parent.appendChild(element);
     }
     // 구조 작성 함수 호출
-    makeElement('header', root);
-    makeElement('nav', root);
+    makeElement('header', root);                   //root.children[0]
+    makeElement('nav', root);                      //root.children[1]
     makeElement('select', root.children[1]);
-    makeElement('textarea' ,root.children[1]);
-    makeElement('button',root.children[1]);
-    makeElement('main', root);
+    makeElement('textarea', root.children[1]);
+    makeElement('button', root.children[1]);
+    makeElement('main', root);                     //root.children[2]
     makeElement('ul', root.children[2]);
     for (let list = 0; list < 10; list++) {
       makeElement('li', root.children[2].children[0]);
@@ -41,72 +43,125 @@
     makeElement('div', root.children[2].children[1]);
     makeElement('div', root.children[2].children[1]);
 
+    // 배열 선언해서 style 작성 함수
+    // function makeStyle(arrayKey, arrayValue, element) {
+    //   for (let i = 0; i < arrayKey.length; i++) {
+    //     element.style[arrayKey[i]] = arrayValue[i];
+    //   }
+    // }
+    function ObjectmakeStyle(object) {
+      for (let i = 0; i < object.firstArray.length; i++) {
+        object.element.style[object.firstArray[i]] = object.secondArray[i];
+      }
+    }
     // root style
-    root.style.width = "100vw";
-    root.style.height = "100vh";
+    
+    const rootStyle = {
+      firstArray: ["width", "height"],
+      secondArray: ["100vw", "100vh"],
+      element: root
+    }
+    ObjectmakeStyle(rootStyle);
 
     // header style
-    root.children[0].style.width = "100%";
-    root.children[0].style.height = "10%";
+    const headerStyle = {
+      firstArray: ["width", "height"],
+      secondArray: ["100%", "10%"],
+      element: root.children[0]
+    }
+    ObjectmakeStyle(headerStyle);
 
     // nav style
-    root.children[1].style.width = "100%";
-    root.children[1].style.height = "10%";
-    root.children[1].style.display = "flex";
-    root.children[1].style.alignItems = "center";
+    const navStyle = {
+      firstArray: ["width", "height", "display", "alignItems"],
+      secondArray: ["100%", "10%", "flex", "center"],
+      element: root.children[1]
+    }
+    ObjectmakeStyle(navStyle);
 
     // nav>select
-    root.children[1].children[0].style.width = "20%"
-    root.children[1].children[0].style.height = "30%"
-    root.children[1].children[0].style.margin = "5%"
+    const navselectStyle = {
+      firstArray: ["width", "height", "margin"],
+      secondArray: ["20%", "30%", "5%"],
+      element: root.children[1].children[0]
+    }
+    ObjectmakeStyle(navselectStyle);
 
     // nav>textarea
-    root.children[1].children[1].style.width = "20%"
-    root.children[1].children[1].style.height = "30%"
+    const navtextareaStyle = {
+      firstArray: ["width", "height"],
+      secondArray: ["20%", "30%"],
+      element: root.children[1].children[1]
+    }
+    ObjectmakeStyle(navselectStyle);
 
     // nav>button
-    root.children[1].children[2].style.width = "5%"
-    root.children[1].children[2].style.height = "30%"
+    const navbuttonStyle = {
+      firstArray: ["width", "height"],
+      secondArray: ["5%", "30%"],
+      element: root.children[1].children[2]
+    }
+    ObjectmakeStyle(navbuttonStyle);
+
     // main style
-    root.children[2].style.width = "100%";
-    root.children[2].style.height = "80%";
-    root.children[2].style.display = "flex";
-    root.children[2].style.justifyContent = "center";
-    root.children[2].style.alignItems = "center";
- 
+    const mainStyle = {
+      firstArray: ["width", "height", "display"],
+      secondArray: ["100%", "80%", "flex", "center", "center"],
+      element: root.children[2]
+    }
+    ObjectmakeStyle(mainStyle);
+
     // ul style
-    root.children[2].children[0].style.width = "40%";
-    root.children[2].children[0].style.height = "100%";
-    root.children[2].children[0].style.display = "flex";
-    root.children[2].children[0].style.flexDirection = "column";
-    root.children[2].children[0].style.justifyContent = "space-around";
-    root.children[2].children[0].style.alignItems = "flex-start";
-    
-    //ul>li style
+    const ulstyle = {
+      firstArray: ["width", "height", "display", "flexDirection", "justifyContent", "alignItems"],
+      secondArray: ["40%", "100%", "flex", "column", "space-around", "flex-start"],
+      element: root.children[2].children[0]
+    }
+    ObjectmakeStyle(ulstyle);
+
+    // ul>li style
     for (let liststyle = 0; liststyle < 10; liststyle++) {
-      root.children[2].children[0].children[liststyle].style.width = "80%";
-      root.children[2].children[0].children[liststyle].style.height = "8%";
-      root.children[2].children[0].children[liststyle].style.listStyleType = "none";
+      const ulliStyle = {
+        firstArray: ["width", "height", "listStyleType"],
+        secondArray: ["80%", "8%", "none"],
+        element: root.children[2].children[0].children[liststyle]
+      }
+      ObjectmakeStyle(ulliStyle);
     }
 
     // main>div style
-    root.children[2].children[1].style.width = "60%";
-    root.children[2].children[1].style.height = "100%";
-    root.children[2].children[1].style.display = "flex";
-    root.children[2].children[1].style.flexDirection = "column";
-    root.children[2].children[1].style.justifyContent = "space-around";
-    root.children[2].children[1].style.alignItems = "center";
+    const maindivStyle = {
+      firstArray: ["width", "height", "display", "flexDirection", "justifyContent", "alignItems"],
+      secondArray: ["60%", "100%", "flex", "column", "space-around", "center"],
+      element: root.children[2].children[1]
+    }
+    ObjectmakeStyle(maindivStyle);
+
     // main>div>img style
-    root.children[2].children[1].children[0].style.width = "80%";
-    root.children[2].children[1].children[0].style.height = "60%";
+    const maindivimgStyle = {
+      firstArray: ["width", "height"],
+      secondArray: ["80%", "60%"],
+      element: root.children[2].children[1].children[0]
+    }
+    ObjectmakeStyle(maindivimgStyle);
+
     // main>div>div[0] style
-    root.children[2].children[1].children[1].style.width = "80%";
-    root.children[2].children[1].children[1].style.height = "15%";
+    const maindivdivoneStyle = {
+      firstArray: ["width", "height"],
+      secondArray: ["80%", "15%"],
+      element: root.children[2].children[1].children[1]
+    }
+    ObjectmakeStyle(maindivdivoneStyle);
+
     // main>div>div[1] style
-    root.children[2].children[1].children[2].style.width = "80%";
-    root.children[2].children[1].children[2].style.height = "15%";
-    
-  </script>
+    const maindivdivtwoStyle = {
+      firstArray: ["width", "height"],
+      secondArray: ["80%", "15%"],
+      element: root.children[2].children[1].children[2]
+    }
+    ObjectmakeStyle(maindivdivtwoStyle);
+
+  </script> -->
 </body>
 
 </html>
