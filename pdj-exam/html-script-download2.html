@@ -11,13 +11,33 @@
     a 태그, 클릭시 href 안의 로컬경로의 파일로 이동함. #태그일 경우 현재 문서를 이동함
     a 태그 안의 download속성에 값 할당 시 값의 내용이 파일의 이름이 되고 a태그 클릭시 
     문서 이동이 아닌 파일 저장으로 바뀜.
+    href의 내용은 원래는 경로가 필요했으나, 해당 스크립트를 이용하면 href의 내용을 file.txt파일의 내용으로 전환 하여 저장할 수 있다.
   -->
+  <h1>제목 : </h1><textarea name="sub" id="subArea" cols="30" rows="1">제목</textarea>
+  <h1>API 주소 : </h1><textarea name="cont" id="contentArea" cols="30" rows="1">ㅁㄴㅇㄹ</textarea>
   <a id="download-link" href="#" download="file.txt">파일 다운로드</a>
+  
+  <script>
+  // https://pokeapi.co/api/v2/
+  const downloadLink = document.getElementById("download-link")
+  const subArea = document.getElementById("subArea")            //파일 제목
+  const contentArea = document.getElementById("contentArea")    //파일 내용
 
-<script>
-  const downloadLink = document.getElementById("download-link");
-  const filename = "hello world";
-  downloadLink.href = "data:text/plain;charset=utf-8," + encodeURIComponent(filename);
+  // contentArea.textContent = "김김첨지"
+  downloadLink.addEventListener("click",function(){
+    let subText = subArea.value
+    let contentText = contentArea.value
+
+    console.log(subText)
+    console.log(contentText)
+
+    // 파일의 제목이 들어갈 부분
+    downloadLink.setAttribute("download",subText+".txt")
+    // 파일의 내용이 들어갈 부분
+    downloadLink.href = "data:text/plain;charset=utf-8," + encodeURIComponent(contentText);
+  })
+  console.dir(downloadLink)
+  console.dir(contentArea.textContent)
 </script>
 </body>
 </html>
