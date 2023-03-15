@@ -1,0 +1,22 @@
+{
+  "name": "kdt-2-pro.c-1team",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParkDalJae/KDT-2-Pro.C-1team.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParkDalJae/KDT-2-Pro.C-1team/issues"
+  },
+  "homepage": "https://github.com/ParkDalJae/KDT-2-Pro.C-1team#readme",
+  "dependencies": {
+    "pokemon": "^2.3.4"
+  }
+}

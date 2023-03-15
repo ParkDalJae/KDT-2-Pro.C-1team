@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* *{box-sizing: border-box; justify-content: space-between; font-weight: ;}  */
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const body = document.body;
+    const root = document.getElementById("root");
+    
+    //root 
+    function elementMaker(tagname,parent) {
+    const element = document.createElement(tagname);
+    parent.appendChild(element);
+    };
+
+    //header
+    elementMaker("div",root);
+    root.children[0].setAttribute("id","header")
+    const header = document.getElementById("header");
+
+    //header > children[0]
+    elementMaker("div",header);
+    elementMaker("div",header.children[0]);
+    header.children[0].children[0].textContent = "만수무강"
+
+    //header > children[1]
+    elementMaker("div",header);
+    for(b=0; b<5; b++){
+    elementMaker("div",header.children[1]);
+    }
+    const member =["박달재", "허진", "정성철", "이경택", "이세민"];
+    function memberLength (element,arrayValue){
+    for(i=0; i<header.children[1].children.length; i++){
+    element.children[i].textContent = arrayValue[i]
+    }
+  }
+  memberLength(header.children[1], member)
+
+    //main
+    elementMaker("div",root);
+    root.children[1].setAttribute("id","main");
+    const main = document.getElementById("main");
+
+    //main > children[0]
+    elementMaker("div",main);
+    
+    //main > children[0] > children
+    for(let mainChilds_1=0; mainChilds_1<4; mainChilds_1++){
+      elementMaker("div",main.children[0]);
+    }
+    //main > children[0] > children[0]
+    elementMaker("div",main.children[0].children[0])
+    // main.children[0].children[0].children[0].textContent = "자기소개!";
+    elementMaker("div",main.children[0].children[0])
+    // main.children[0].children[0].children[1].textContent = "박달재";
+    //main > children[0] > children[1]
+    elementMaker("h1", main.children[0].children[1])
+    // main.children[0].children[1].children[0].textContent = "박달재 페이지 입니다.";
+    // main > children[0] > children[2]
+    elementMaker("img", main.children[0].children[2]);
+    // main.children[0].children[2].children[0].setAttribute("id","image");
+    // main.children[0].children[2].children[0].setAttribute("src","https://imgnews.pstatic.net/image/417/2023/03/06/0000900799_001_20230306042701443.jpg?type=w647");
+
+    main.children[0].children[3].textContent = "";
+    
+    for (let event = 0; event<header.children[1].children.length; event++){
+      header.children[1].children[event].addEventListener("click", function() {
+        for(let white=0; white<header.children[1].children.length; white++){
+          header.children[1].children[white].style.color = "white";
+        }
+        if(event===0){
+          //박달재 페이지
+          header.children[1].children[0].style.color = "black";
+          header.children[1].children[0].style.fontWeight = "bold";
+            main.children[0].children[0].children[0].textContent = "자기소개!";
+            main.children[0].children[0].children[1].textContent = "박달재";
+            //main > children[0] > children[1]
+            main.children[0].children[1].children[0].textContent = "박달재 페이지 입니다.";
+            // main > children[0] > children[2]
+            main.children[0].children[2].children[0].setAttribute("id","image");
+            main.children[0].children[2].children[0].setAttribute("src","https://imgnews.pstatic.net/image/417/2023/03/06/0000900799_001_20230306042701443.jpg?type=w647");
+              main.children[0].children[3].textContent = "";
+            }
+
+          else if(event ===1){
+            //허진 페이지
+            header.children[1].children[1].style.color = "black";
+            header.children[1].children[1].style.fontWeight = "bold";
+            main.children[0].children[0].children[0].textContent = "자기소개!";
+            main.children[0].children[0].children[1].textContent = "허진";
+            //main > children[0] > children[1]
+            main.children[0].children[1].children[0].textContent = "허진 페이지 입니다.";
+            // main > children[0] > children[2]
+            main.children[0].children[2].children[0].setAttribute("id","image");
+            main.children[0].children[2].children[0].setAttribute("src","https://imgnews.pstatic.net/image/417/2023/03/06/0000900799_001_20230306042701443.jpg?type=w647");
+            
+            main.children[0].children[3].textContent = "";
+            }
+          else if(event ===2){
+            //정성철 페이지
+            header.children[1].children[2].style.color = "black";
+            header.children[1].children[2].style.fontWeight = "bold";
+            main.children[0].children[0].children[0].textContent = "자기소개!";
+            main.children[0].children[0].children[1].textContent = "정성철";
+            //main > children[0] > children[1]
+            main.children[0].children[1].children[0].textContent = "안녕하세요 1조 만수무강팀 정성철입니다.";
+            // main > children[0] > children[2]
+            main.children[0].children[2].children[0].setAttribute("id","image");
+            main.children[0].children[2].children[0].setAttribute("src","https://imgnews.pstatic.net/image/417/2023/03/06/0000900799_001_20230306042701443.jpg?type=w647");
+            
+            main.children[0].children[3].textContent = "";
+          }
+          else if(event ===3){
+            //이경택 페이지
+            header.children[1].children[3].style.color = "black";
+            header.children[1].children[3].style.fontWeight = "bold";
+            main.children[0].children[0].children[0].textContent = "자기소개!";
+            main.children[0].children[0].children[1].textContent = "이경택";
+            //main > children[0] > children[1]
+            main.children[0].children[1].children[0].textContent = "이경택 페이지 입니다.";
+            // main > children[0] > children[2]
+            main.children[0].children[2].children[0].setAttribute("id","image");
+            main.children[0].children[2].children[0].setAttribute("src","https://imgnews.pstatic.net/image/417/2023/03/06/0000900799_001_20230306042701443.jpg?type=w647");
+            
+            main.children[0].children[3].textContent = "";
+          }
+          else {
+            //이세민 페이지
+            header.children[1].children[4].style.color = "black";
+            header.children[1].children[4].style.fontWeight = "bold";
+            main.children[0].children[0].children[0].textContent = "자기소개!";
+            main.children[0].children[0].children[1].textContent = "이세민";
+            //main > children[0] > children[1]
+            main.children[0].children[1].children[0].textContent = "이세민 페이지 입니다.";
+            // main > children[0] > children[2]
+            main.children[0].children[2].children[0].setAttribute("id","image");
+            main.children[0].children[2].children[0].setAttribute("src","https://imgnews.pstatic.net/image/417/2023/03/06/0000900799_001_20230306042701443.jpg?type=w647");
+            
+            main.children[0].children[3].textContent = "";
+          }
+        });
+      }
+
+
+    //main > children[1]
+    elementMaker("div",main);
+
+    //footer
+    elementMaker("div",root);
+    root.children[2].setAttribute("id","footer");
+    const footer = document.getElementById("footer");
+
+
+
+
+
+    //common style
+    body.style.boxSizing = "border-box";
+    body.style.margin = "0";
+
+    //root style
+    root.style.width = "100vw";
+    root.style.height = "200vh";
+
+    //header style
+    header.style.width = "100%";
+    header.style.height = "7%";
+    header.style.backgroundColor = "gray";
+    header.style.color = "white";
+
+    //header > children[0]
+    header.children[0].style.width = "100%";
+    header.children[0].style.height = "50%";
+    header.children[0].style.border = "1px solid black";
+    header.children[0].style.display = "flex";
+    header.children[0].style.flexDirection = "row";
+    header.children[0].style.justifyContent = "center";
+    header.children[0].style.alignItems = "center";
+
+     //header > children[1]
+    header.children[1].style.width = "100%";
+    header.children[1].style.height = "50%";
+    header.children[1].style.border = "1px solid black";
+    header.children[1].style.display = "flex";
+    header.children[1].style.flexDirection = "row";
+    header.children[1].style.justifyContent = "space-around";
+    header.children[1].style.alignItems = "center";
+
+     //header > children[1] > children[0]
+    header.children[1].children[0].style.color = "black";
+    header.children[1].children[0].style.fontWeight = "bold";
+
+
+    //main style
+    main.style.width = "100%";
+    main.style.height = "83%";
+    main.style.border = "1px solid gray";
+    main.style.display = "flex";
+    main.style.flexDirection = "row";
+    
+    //main > children[0]
+    main.children[0].style.width = "70%";
+    main.children[0].style.height = "100%";
+    main.children[0].style.margin = "5%";
+    
+
+    //main > children[0] > children[0]
+    main.children[0].children[0].style.display = "flex";
+    main.children[0].children[0].style.flexDirection = "row";
+    main.children[0].children[0].style.justifyContent = "space-between";
+    main.children[0].children[0].style.alignItems = "center";
+
+    //main > children[1]
+    main.children[1].style.width = "30%";
+    main.children[1].style.height = "100%";
+    main.children[1].style.border = "1px solid gray";
+    
+    //footer style
+    footer.style.width = "100%";
+    footer.style.height = "10%";
+    footer.style.border = "1px solid gray";
+
+
+
+  </script>
+</body>
+</html>
