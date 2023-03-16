@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="" id="imgSqr">
+  </div>
+  <script>
+    // https://pokeapi.co/api/v2/pokemon-species/1/?offset=0&limit=100000 //리미트해제
+    `const _URLDex = 'https://pokeapi.co/api/v2/pokedex/1?offset=0&limit=100000' //전체넘버 추출용
+    
+    xhr1.open('GET',_URLDex)
+    xhr1.send();
+    xhr1.addEventListener("load",function(){  
+      console.log("--------------------------------------------1")
+      const _PokeData = JSON.parse(xhr1.response)
+      
+      // const h1 = document.createElement('h1')
+      // h1.textContent = _PokeData.name
+      // root.appendChild(h1)
+      // _URLMonDex.push(_PokeData.)
+      console.dir("************************************************2") 
+      console.dir(_PokeData) //pokedex부분 콘솔dir
+      console.dir(_PokeData.pokemon_entries) //pokedex부분 콘솔dir
+      console.dir(_PokeData.pokemon_entries.length) //pokedex Length값
+      console.dir(_PokeData.pokemon_entries[1].entry_number) //pokedex 부분 index
+      console.dir(_PokeData.pokemon_entries[1].pokemon_species.name) //pokedex부분 name
+      console.dir("************************************************3") 
+    })`
+    //포켓몬 정보(id,영문명,이미지)
+    const tempArray =[]
+    for(let i=0;i<1010;i++){
+      const xhr1 = new XMLHttpRequest();
+      
+      const _URLInfo = `https://pokeapi.co/api/v2/pokemon/${i}?offset=0&limit=100000` 
+      
+      
+    xhr1.open('GET',_URLInfo)
+    xhr1.send();
+    xhr1.addEventListener("load",function(){  
+      const _PokeData = JSON.parse(xhr1.response)
+      tempArray.push(_PokeData)
+      const h1 = document.createElement('h1')
+      h1.textContent = _PokeData.name
+      root.appendChild(h1)
+      // console.dir(_PokeData) //pokedex부분 콘솔dir
+    })
+  }
+  console.log(tempArray)
+  </script>
+</body>
+</html>
