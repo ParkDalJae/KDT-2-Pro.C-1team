@@ -16,12 +16,30 @@
 
     //이 URL에 주소, 파일 이름을 입력해주면 된다.
     const MyURL = "https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=100000";
-    // const MyURL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100000";
     const fileName = "pokemonAttriFile";
+
+    // const MyURL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100000";
     // const fileName = "pokeDataFile";
 
+    // 이 버전은 http를 키기만 해도 다운로드가 실행된다.
+    // async function handleFileDownload (){
+    //   const response = await fetch(MyURL);
+    //   const file = await response.blob();
+    //   const downloadUrl = window.URL.createObjectURL(file);
+      
+    //   const aElement = document.createElement('a');
+    //   document.body.appendChild(aElement);
+    //   aElement.download = fileName;
+    //   aElement.href = downloadUrl;
+      
+    //   aElement.click();
+      
+    //   document.body.removeChild(aElement);
+    //   window.URL.revokeObjectURL(downloadUrl);
+    // }
 
-    async function handleFileDownload (){
+    //버튼을 클릭했을때 비로소 다운로드가 실행된다.
+    btn.addEventListener("click",async function (){
       const response = await fetch(MyURL);
       const file = await response.blob();
       const downloadUrl = window.URL.createObjectURL(file);
@@ -35,8 +53,8 @@
       
       document.body.removeChild(aElement);
       window.URL.revokeObjectURL(downloadUrl);
-    }
-    btn.addEventListener("click",handleFileDownload());
+    });
+
   </script>
 </body>
 </html>
