@@ -22,8 +22,7 @@
     const root = document.getElementById('root');
 
     const selectarray = ["이름","번호"]
-    const listarray= ["이상해씨","파이리","꼬부기","잠만보"];
-    
+    const listarray= new Array(1080);
 
     // 구조 작성 함수
     function makeElement(tagName, parent, addNum) {
@@ -64,15 +63,12 @@
     makeElement('li', root.children[2].children[0], listarray.length);
     makeElement('div', root.children[2], 1);
     makeElement('img', root.children[2].children[1], 1);
-    makeElement('div', root.children[2].children[1], selectarray.length);
+    makeElement('div', root.children[2].children[1], 4);
+    makeElement('div', root.children[2].children[1], 1);
+    makeElement('input', root.children[2].children[1].children[5], 1);
+    makeElement('button', root.children[2].children[1].children[5], 1);
 
-    // 배열 선언해서 style 작성 함수
-    // function makeStyle(arrayKey, arrayValue, element) {
-    //   for (let i = 0; i < arrayKey.length; i++) {
-    //     element.style[arrayKey[i]] = arrayValue[i];
-    //   }
-    // }
-  
+
     // root style
     const rootStyle = {
       firstArray: ["width", "height"],
@@ -106,7 +102,7 @@
     ObjectmakeStyle(navselectStyle);
 
 
-    // nav>textarea
+    // nav>input
     const navinputStyle = {
       firstArray: ["width", "height"],
       secondArray: ["20%", "30%"],
@@ -129,6 +125,7 @@
       element: root.children[2]
     }
     ObjectmakeStyle(mainStyle);
+    
     // ul style
     const ulstyle = {
       firstArray: ["width", "height", "display", "flexDirection", "justifyContent", "alignItems","overflow"],
@@ -165,19 +162,39 @@
     ObjectmakeStyle(maindivimgStyle);
 
     // main>div>div[i] style
-    for (let i = 1; i <= selectarray.length; i++) {
+    for (let i = 1; i <= 4; i++) {
       const maindivdivoneStyle = {
         firstArray: ["width", "height","margin"],
         secondArray: ["80%", "10%","2%"],
         element: root.children[2].children[1].children[i]
       }
       ObjectmakeStyle(maindivdivoneStyle);
-      makeText(root.children[2].children[1].children[i],selectarray[i-1])
     }
+
+    const maindivdivcommentStyle = {
+      firstArray: ["width","height","margin","display"],
+      secondArray: ["80%","5%","2%","flex"],
+      element: root.children[2].children[1].children[5]
+    }
+    ObjectmakeStyle(maindivdivcommentStyle);
+
+    const maindivdivinputStyle = {
+      firstArray: ["width","height"],
+      secondArray: ["70%","100%"],
+      element: root.children[2].children[1].children[5].children[0]
+    }
+    ObjectmakeStyle(maindivdivinputStyle);
+
+    const maindivdivbuttonStyle = {
+      firstArray: ["width","height"],
+      secondArray: ["30%","100%"],
+      element: root.children[2].children[1].children[5].children[1]
+    }
+    ObjectmakeStyle(maindivdivbuttonStyle);
    
     for(let i = 0; i < listarray.length; i++){
       root.children[2].children[0].children[i].addEventListener('click',function(){
-        
+       
       })
     }
   </script>
