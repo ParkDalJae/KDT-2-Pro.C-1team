@@ -8,17 +8,18 @@ const connection = mysql.createConnection({
   database: 'taek'
 });
 
+// 데이터베이스 연결
 connection.connect();
 let sql = 'insert into test (name, area, age) values (?,?,?)';
-let para = ['dlrudxor','Daejon',20];
+let insert = ['dlrudxor', 'Daejon', 25];
 let select = 'select * from test';
-// 데이터베이스 연결
-// HTML 폼 데이터 가져오기
-connection.query(sql, para, function (err, results, fields){
-  // if (err) throw err;
-  console.log(results);
+
+// query문 insert
+connection.query(sql, insert, function (err, results, fields) {
 })
-connection.query(select, (err,results,fields) => {
+
+// query문 select
+connection.query(select, (err, results, fields) => {
   console.log(results);
 })
 // 연결 종료
