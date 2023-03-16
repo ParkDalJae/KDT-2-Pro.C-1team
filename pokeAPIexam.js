@@ -10,27 +10,24 @@ xhr.addEventListener('load',function(){
   pokeDataFile.push(pokeData)
   pokeDataStringFile.push(JSON.stringify(pokeData))
 })
+const pokepoke = console.log(pokeDataFile)
+
+console.log(pokeDataStringFile)
+exports (pokepoke)
 
 // console.log(pokeDataFile)
 // console.log(pokeDataStringFile)
 
 // console.log(poke)
-const fs = require('fs');
-const fileName = "poke-species-list.json";
-try {
-  const file = fileName;
-  const data = pokeDataStringFile;
-  xhr.setRequestHeader('Content-type','application/json');
-  fs.appendFileSync(file,data)
-} catch(error) {
-  console.log(error)
-}
 
 
 
 // xhr.open("post",'D:\KDT-2\KDT-2-Pro.C-1team'.true);
 // xhr.send(pokeDataStringFile)
 
+// const filedown = require('./fsfile')
+// filedown("pokemonData.json","pokeDataStringFile")
 
 
-
+//new에서 읽지를 못함 nwe 가 없더라도 xmlhttprequest 도 못읽음
+//http에서 작동하는 방식인가?

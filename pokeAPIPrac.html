@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="root">
-    <input type="button" id="click-button" value="Download">
+    <input type="button" herf="#" id="click-button" value="Download">
   </div>
   <script>
 
@@ -26,19 +26,22 @@
       pokeDataStringFile.push(JSON.stringify(pokeData))
     })
 
+    console.log(pokeDataFile)
+
 
     //html에서 js를 이용한 다운로드이용
     const root = document.getElementById('root')
     const cb = document.getElementById('click-button')
     function downaaaa(filename, textInput){
       const element = document.createElement('a');
-      element.setAttribute('herf','data:text/plain;charset=utf-8, '+encodeURIComponent(textInput));
+      element.setAttribute('herf','data:text/plain;charset=utf-8,'+encodeURIComponent(textInput));
       element.setAttribute('download',filename);
       document.body.appendChild(element);
       element.click();
     }
+
     cb.addEventListener('click',function (){
-      downaaaa("일단 이름 대충.json",pokeDataStringFile)
+      downaaaa("일단 이름 대충.text",pokeDataStringFile)
           }, false);
 
 
