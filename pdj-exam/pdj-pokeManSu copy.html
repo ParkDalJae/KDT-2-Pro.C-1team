@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    
+  </div>
+  <script>
+    const root = document.getElementById('root')
+                                                        //h3, textarea, textareaid 생성 함수
+    function createTextAreaObj(areaName,parents,textareaId){     
+      const tempH3 = document.createElement('h3')
+      tempH3.textContent = areaName+""
+      const tempTextarea = document.createElement('textarea')
+      tempTextarea.id = textareaId
+      tempTextarea.cols = "30"
+      tempTextarea.rows = "1"
+      parents.appendChild(tempH3)
+      parents.appendChild(tempTextarea)
+    }
+    
+    //h3, textarea 동적생성
+    createTextAreaObj("파일이름 : ",root,"fileName")                
+    createTextAreaObj("변수이름 : ",root,"variableName")
+    createTextAreaObj("API주소 : ",root,"apiAddress")
+    //textarea 변수선언
+    const fileName = document.getElementById('fileName')           
+    const variableName = document.getElementById('variableName')
+    const apiAddress = document.getElementById('apiAddress')
+    variableName.value="asdf"   //임시 variable 값
+    apiAddress.value="https://pokeapi.co/api/v2/"   //임시 default 주소
+
+    const clickBtn = document.createElement('button')
+    root.appendChild(clickBtn)
+    clickBtn.textContent = '클릭'
+
+
+    const tempObj = {asdf : 1, sdfg : 2, qwer : 3}
+    // 클릭버튼 다운로드 이벤트
+    clickBtn.addEventListener('click',function(){
+      let element = document.createElement('a')
+
+      let xmlHR = new XMLHttpRequest();
+      
+      // const rootUrl = "https://pokeapi.co/api/v2/"//root
+      const rootUrl = apiAddress.value
+      xmlHR.open('get',rootUrl)
+      console.log(rootUrl)
+      xmlHR.send()
+      xmlHR.addEventListener('load',function(){
+        const _PokeAPIrootUrl = JSON.parse(xmlHR.response)
+        for(let i in _PokeAPIrootUrl){
+          if(_PokeAPIrootUrl.hasOwnProperty(i))
+          console.log(`${i} : ${_PokeAPIrootUrl[i]}`)
+        }
+        console.dir(_PokeAPIrootUrl)
+        //파일 내용 정하기
+        element.href = 'data:text/plain;charset=utf-8,'+"const "+ variableName.value + " = " + JSON.stringify(_PokeAPIrootUrl)
+        
+        //파일이름 정하기
+        element.download = fileName.value
+        element.style.display = "none"
+        root.appendChild(element)
+        element.click()
+        root.removeChild(element)
+      })
+    })
+    console.dir(root)
+    
+    
+  </script>
+</body>
+</html>

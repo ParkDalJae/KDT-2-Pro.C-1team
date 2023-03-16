@@ -128,15 +128,15 @@
       xhr3.send();
       xhr3.addEventListener("load",function(){     
         const _PokeData = JSON.parse(xhr3.response)
-        // const h1 = document.createElement('h1')
+        const h1 = document.createElement('h1')
         
         for(let i=0;i<_PokeData.names.length;i++){ // 포켓몬 한글 이름
           if(_PokeData.names[i].language.name==="ko"){
             pokeKoName.push([_PokeData.id, _PokeData.names[i].name])
             pokeKoName.sort((a, b) => a[0] - b[0])
             
-            // h1.textContent = _PokeData.names[i].name+_PokeData.id
-            // root.appendChild(h1)
+            h1.textContent = _PokeData.names[i].name+_PokeData.id
+            root.appendChild(h1)
           }
         }
       })

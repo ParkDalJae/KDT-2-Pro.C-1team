@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const totalPokeSet = {
+      name : "이상해씨",
+      index : 0,
+      asdf : 1,
+      sdfg : 2,
+      dfgh : 3,
+    }
+    
+    const exObjKey = Object.keys(totalPokeSet)           //totalPokeSet 키
+    console.dir(exObjKey)
+    
+    const exObjValue = Object.values(totalPokeSet)       //totalPokeSet values
+    console.dir(exObjValue)
+    
+    const exObj = {}
+    for(let i=0;i<exObjKey.length;i++){
+      exObj[exObjKey[i]] = exObjValue[i]
+    }
+    console.log(exObj)
+
+    for(let i in totalPokeSet){             //안됨
+      if(totalPokeSet.hasOwnProperty(i)){
+        console.log(`${i} : ${totalPokeSet[i]}`)
+      }
+    }
+  </script>
+</body>
+</html>
