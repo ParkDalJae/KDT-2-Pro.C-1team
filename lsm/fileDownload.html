@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <input type="button" id="btn" value="다운로드">
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    const btn = document.getElementById('btn');
+
+    //이 URL에 주소, 파일 이름을 입력해주면 된다.
+    const MyURL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100000";
+    const fileName = "pokemonAttriFile";
+
+
+    async function handleFileDownload (){
+      const response = await fetch(MyURL);
+      const file = await response.blob();
+      const downloadUrl = window.URL.createObjectURL(file);
+      
+      const aElement = document.createElement('a');
+      document.body.appendChild(aElement);
+      aElement.download = fileName;
+      aElement.href = downloadUrl;
+      
+      aElement.click();
+      
+      document.body.removeChild(aElement);
+      window.URL.revokeObjectURL(downloadUrl);
+    }
+    btn.addEventListener("click",handleFileDownload());
+  </script>
+</body>
+</html>
