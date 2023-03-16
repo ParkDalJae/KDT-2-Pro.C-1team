@@ -33,6 +33,7 @@
     const variableName = document.getElementById('variableName')
     const apiAddress = document.getElementById('apiAddress')
     variableName.value="asdf"   //임시 variable 값
+    // apiAddress.value="https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100000"   //임시 default 주소
     apiAddress.value="https://pokeapi.co/api/v2/"   //임시 default 주소
 
     const clickBtn = document.createElement('button')
@@ -70,7 +71,7 @@
         root.removeChild(element)
       })
     })
-    console.dir(root)
+    
     
     
   </script>

@@ -15,6 +15,15 @@
     const imgSqr = document.getElementById('imgSqr')
     // https://pokeapi.co/api/v2/pokemon-species/1/?offset=0&limit=100000 //리미트해제
     const tempArrayDex =[] // 배열 선언
+    function tmpArrSort(a,b){
+      if(a.id<b.id){ //a.id가 b.id보다 작으면, a -1해라
+        return -1;
+      }
+      if(a.id>b.id){
+        return +1;
+      }
+    }
+
     for(let i=1;i<1011;i++){
       const xhr1 = new XMLHttpRequest();
 
@@ -26,39 +35,32 @@
         
         const _PokeData = JSON.parse(xhr1.response)
         tempArrayDex.push(_PokeData)
-        tempArrayDex.sort((a,b) => a[0]-b[0])
+        tempArrayDex.sort(tmpArrSort)
+        
       })
     }
+
     imgSqr.addEventListener('click',function(){
+      const element = document.createElement('a')
+      element.style.display = 'none'
+      element.href ='data:text/plain;charset=utf-8,' +  "const totData = "+ JSON.stringify(tempArrayDex)
+      element.download = "totData.txt"
+
+      root.appendChild(element)
+      element.click();
+      root.removeChild(element)
+
+
       console.log(tempArrayDex.length)
+      
+      console.log(tempArrayDex[0])
       console.log(tempArrayDex[0].id)
       console.log(tempArrayDex[500].id)
       console.log(tempArrayDex[1000].id)
+      
     })
 
     
-    const tempArrayMmon =[]
-  //   for(let i=0;i<1011;i++){
-  //     const xhr1 = new XMLHttpRequest();
-      
-  //     const _URLInfo = `https://pokeapi.co/api/v2/pokemon/${i}?offset=0&limit=100000` 
-      
-      
-  //   xhr1.open('GET',_URLInfo)
-  //   xhr1.send();
-  //   xhr1.addEventListener("load",function(){  
-  //     const _PokeData = JSON.parse(xhr1.response)
-  //     tempArray.push(_PokeData)
-  //     const h1 = document.createElement('h1')
-  //     h1.textContent = _PokeData.name
-  //     root.appendChild(h1)
-  //     console.dir(_PokeData) //pokedex부분 콘솔dir
-  //   })
-  // }
-  // console.log(tempArray)
-  
-//   const pokeData = [    [[pokemonUrl],[pokespaice]],  ]
-// pokeData[0].pokemonUrl.id
 
 
   </script>

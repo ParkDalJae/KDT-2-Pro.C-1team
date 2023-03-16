@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const totalPokeSet = [
+      {index:1, name: "여운형"},
+      {index:3, name: "김수죽"},
+      {index:2, name: "박달재"},
+      {index:6, name: "허광수"},
+      {index:7, name: "공상철"},
+      {index:8, name: "남궁형"},
+      {index:5, name: "황보형"},
+      {index:4, name: "서문제"},
+      {index:9, name: "독고검"},
+      {index:0, name: "김첨지"},
+    ]
+    function tempArraySort(a, b){
+      if(a.index < b.index){
+        return -1
+      }
+      if(a.index > b.index){
+        return +1
+      }
+    }
+    totalPokeSet.sort(tempArraySort)
+    console.log(totalPokeSet)
+  </script>
+</body>
+</html>
