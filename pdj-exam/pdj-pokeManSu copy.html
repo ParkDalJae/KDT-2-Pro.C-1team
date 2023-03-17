@@ -35,17 +35,17 @@
     variableName.value="asdf"   //임시 variable 값
     // apiAddress.value="https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100000"   //임시 default 주소
     apiAddress.value="https://pokeapi.co/api/v2/"   //임시 default 주소
-
+    
     const clickBtn = document.createElement('button')
     root.appendChild(clickBtn)
     clickBtn.textContent = '클릭'
-
-
+    
+    
     const tempObj = {asdf : 1, sdfg : 2, qwer : 3}
     // 클릭버튼 다운로드 이벤트
     clickBtn.addEventListener('click',function(){
       let element = document.createElement('a')
-
+      
       let xmlHR = new XMLHttpRequest();
       
       // const rootUrl = "https://pokeapi.co/api/v2/"//root
