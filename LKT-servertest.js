@@ -1,22 +1,18 @@
 // require 메서드를 통해 외부 모듈을 가져온다.
 const http = require('http');
 
-// 브라우저에 form 태그를 만드는 html이다.
-// const formTag = `
-//  <form method="GET" action="/login">
-//   <input type="text" name="id">
-//   <input type="submit">
-//   </form> 
-//   `;
-
 // 문자를 반환해주는 함수이다.
 function greet(fromSubmitString) {
   return `<h1>${fromSubmitString}</h1>`;
 }
 
+function firstPage(data){
+  return `${data}`;
+}
+
 // local:2080을 입력했을 때 처음 브라우저에 띄워지는 화면이다.
-function firstPage() {
-  return `
+const htmltag =
+   `
   <!DOCTYPE html>
 <html lang="en">
 
@@ -205,7 +201,7 @@ function firstPage() {
     }
     ObjectmakeStyle(maindivdivcommentStyle);
     makeAttribute('action', './submit-form', root.children[2].children[1].children[5]);
-    makeAttribute('method', 'post', root.children[2].children[1].children[5])
+    makeAttribute('method', 'GET', root.children[2].children[1].children[5])
 
     const maindivdivinputStyle = {
       firstArray: ["width", "height"],
@@ -236,7 +232,6 @@ function firstPage() {
 
 </html>
   `
-}
 
 // request는 요청에 관한 정보를 담고 있고, respond는 응답에 관한 정보를 담고 있다.
 const server = http.createServer(function(request, response){
@@ -244,7 +239,7 @@ const server = http.createServer(function(request, response){
   if(request.method === 'GET' && request.url === '/') {
     // 200 은 상태코드 이고 그 오른쪽은 헤더 정보이다. 상태코드는 HTTP 상태코드를 말하는데 200,404같은 것들이다. 'text/html'은 응답의 콘텐츠 형식이 HTML이라는 의미이다.
     response.writeHead(200, {'Content-Type': 'text/html'});
-    let page = firstPage();
+    let page = firstPage(htmltag);
     // 본문(body)에 보여지는 부분을 쓰는 메서드이다.
     response.write(page);
     // 응답을 종료하는 메서드이다.
@@ -252,15 +247,15 @@ const server = http.createServer(function(request, response){
   }
   // 무언가
   // startsWith(searchValue, start-index)는 searchValue에 찾으려는 문자열을 입력하고 start-index는 탐색을 시작하려는 인덱스 값을 의미한다.
-  // if(request.method === 'GET' && request.url.startsWith('/login')) {
-  //   // split(separator,limit)는 separator를 기준으로 문자열을 분할 하여 배열로 넘겨준다.
-  //   const name = decodeURI(request.url).split('&').join('=').split('=')[1];
-  //   encodeURIComponent(name);
-  //   response.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-  //   let page = firstPage(greet(name))
-  //   response.write(page);
-  //   response.end();
-  // }
+  if(request.method === 'GET' && request.url.startsWith('/submit-form')) {
+    // split(separator,limit)는 separator를 기준으로 문자열을 분할 하여 배열로 넘겨준다.
+    const name = decodeURI(request.url).split('=')[1];
+    encodeURIComponent(name);
+    response.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+    let page = firstPage(greet(name))
+    response.write(page);
+    response.end();
+  }
 });
 // 서버 포트 설정
 // 서버와 연결할 포트를 2080으로 지정하고 , 포트 연결 완료 후 실행된 콜백함수를 입력하면 된다.
