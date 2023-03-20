@@ -10,13 +10,15 @@
   <div id="root">
     <input type="button" id="btn" value="다운로드">
   </div>
+  <script src="../pokeDataValue.html"></script>
   <script>
     const root = document.getElementById('root');
     const btn = document.getElementById('btn');
-
+    
     //이 URL에 주소, 파일 이름을 입력해주면 된다.
-    const MyURL = "https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=100000";
-    const fileName = "pokemonAttriFile";
+    // const MyURL = "https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=100000";
+    const MyURL = "http://127.0.0.1:5500/pokeDataValue.html";
+    const fileName = "pokeIndex.html";
 
     // const MyURL = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100000";
     // const fileName = "pokeDataFile";
