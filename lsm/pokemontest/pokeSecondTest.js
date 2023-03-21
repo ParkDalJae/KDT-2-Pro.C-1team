@@ -8,6 +8,8 @@ import pokeUrl from '../pokemontest/pokemonArrData/pokeJsonUrl.js'
 // const pokeDataNameEn = [];
 // const pokeDataNameKo = [];
 // const pokeDataPokedex = [];
+const pokeDataIdEnKo = [];
+const pokeIndexTypeArt = [];
 
 // console.log(pokemonData.results[0].url);
 
@@ -62,29 +64,93 @@ import pokeUrl from '../pokemontest/pokemonArrData/pokeJsonUrl.js'
 
 
 
-fetch(pokeUrl.pokeIndexUrl[0])
-  .then(response => response.json())
-  .then(pokedata => {
-    const pokemonDataId = pokedata.id;
-    const pokemonDataEnName = pokedata.name;
-    const pokemonDataKoName = pokedata.names[2].name;
-    const pokemonDataDexName = pokedata["pokedex_numbers"][1].pokedex.name;
+//구동 확인 완료 원본
+// fetch(pokeUrl.pokeIndexUrl[0])
+//   .then(response => response.json())
+//   .then(pokedata => {
+//     const pokemonDataId = pokedata.id;
+//     const pokemonDataEnName = pokedata.name;
+//     const pokemonDataKoName = pokedata.names[2].name;
+//     const pokemonDataDexName = pokedata["pokedex_numbers"][1].pokedex.name;
+//     return pokemonDataId
+//   })
+//   .catch(error => console.error(error))
 
-  })
-  .catch(error => console.error(error))
+
+
+// fetch(pokeUrl.pokeDataUrl[0])
+// .then(response => response.json())
+// .then(pokedata => {
+//   const pokemonIndexId = pokedata.id
+//   const pokemonIndexEnName = pokedata.name
+//   if(pokedata.types.length === 2){
+//     const pokemonIndexTypeFirst = pokedata.types[0].type.name
+//     const pokemonIndexTypeSecond = pokedata.types[1].type.name
+//   } else {
+//     const pokemonIndexTypeFirst = pokedata.types[0].type.name
+//   }
+//   const pokemonIndexOfficialArtwork = pokedata.sprites.other["official-artwork"]["front_default"]
+// })
 
 
 
-fetch(pokeUrl.pokeDataUrl[0])
-.then(response => response.json())
-.then(pokedata => {
-  const pokemonIndexId = pokedata.id
-  const pokemonIndexEnName = pokedata.name
-  if(pokedata.types.length === 2){
-    const pokemonIndexTypeFirst = pokedata.types[0].type.name
-    const pokemonIndexTypeSecond = pokedata.types[1].type.name
-  } else {
-    const pokemonIndexTypeFirst = pokedata.types[0].type.name
-  }
-  const pokemonIndexOfficialArtwork = pokedata.sprites.other["official-artwork"]["front_default"]
+
+
+
+
+
+
+//실험용 1
+//실험 한꺼번에 하나의 배열에 넣어볼려고 했는데 역시 넣어지지 않는다.(실패)
+// for(let i = 0; i < 10; i++){
+
+//   fetch(pokeUrl.pokeIndexUrl[i])
+//   .then(response => response.json())
+//   .then(pokedata => {
+//     pokeDataIdEnKo.push([pokedata.id, pokedata.name, pokedata.names[2].name, pokedata["pokedex_numbers"][1].pokedex.name])
+//   })
+//   .catch(error => console.error(error))
+  
+  // fetch(pokeUrl.pokeDataUrl[i])
+  // .then(response => response.json())
+  // .then(pokedata => {
+  //   if(pokedata.types.length === 2){
+    //     pokeIndexTypeArt.push([pokedata.id,pokedata.name,pokedata.types[0].type.name,pokedata.types[1].type.name,pokedata.sprites.other["official-artwork"]["front_default"]])
+    //     console.log(pokeIndexTypeArt)
+    //   } else {
+      //     pokeIndexTypeArt.push([pokedata.id,pokedata.name,pokedata.types[0].type.name,"",pokedata.sprites.other["official-artwork"]["front_default"]])
+      //     console.log(pokeIndexTypeArt)
+      //   }
+  // })
+  // .catch(error => console.error(error))
+  
+// }
+
+
+
+
+
+
+// 실험용 2 콜백함수 활용해보자
+
+function pokemonDataAll (pokemonUrl, callback){
+  fetch(pokemonUrl)
+    .then(response => response.json())
+    .then(pokedata => {
+      callback(pokedata)
+    })
+    .catch(error => console.error(error))
+}
+
+pokemonDataAll(pokeUrl.pokeDataUrl[0],function(pokedata){
+  // console.log(pokedata)
+
+  // pokedata.forEach(element => { //요소별로 각각 푸쉬로 넣으면 될까 했지만 실패
+  //   pokeDataIdEnKo.push(element)
+  // });
+
+  pokeDataIdEnKo.push(pokedata.id)
+  // return pokeDataIdEnKo
 })
+console.log(pokeDataIdEnKo)
+
